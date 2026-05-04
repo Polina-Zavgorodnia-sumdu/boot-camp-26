@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EstData — Економіка регіонів Естонії</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- TASKBAR (header) -->
+  <div class="taskbar">
+    <div class="taskbar-inner">
+
+      <div class="taskbar-brand">
+        <div class="taskbar-logo">
+          <!-- estonia.png замість кола з "EE" -->
+          <img src="icons/estonia.png" alt="Естонія" class="logo-flag-img" />
+        </div>
+        <div class="taskbar-appname">
+          <span class="appname-main">EstData</span>
+          <span class="appname-sub">Економіка регіонів</span>
+        </div>
+      </div>
+
+      <div class="taskbar-buttons">
+        <button class="task-btn active" data-tab="dashboard">
+          <span class="task-btn-icon">
+            <img src="icons/dashboard.png" alt="Дашборд" class="taskbtn-img" />
+          </span>
+          Дашборд
+        </button>
+        <button class="task-btn" data-tab="compare">
+          <span class="task-btn-icon">
+            <img src="icons/compare.png" alt="Порівняння" class="taskbtn-img" />
+          </span>
+          Порівняння
+        </button>
+      </div>
+
+      <div class="taskbar-clock" id="taskbarClock">00:00</div>
+    </div>
+  </div>
+
+  <!-- DESKTOP -->
+  <div class="desktop">
+
+    <!-- ===== TAB: DASHBOARD ===== -->
+    <div id="tab-dashboard" class="tab-section active">
+
+      <!-- WINDOW: Регіон -->
+      <div class="win7-window" id="win-region">
+        <div class="win7-titlebar">
+          <div class="win7-titlebar-left">
+            <div class="win7-app-icon">
+              <img src="icons/map-pin.png" alt="Регіон" class="winicon-img" />
+            </div>
+            <span class="win7-title-text">Вибір регіону та показники</span>
+          </div>
+          <div class="win7-window-controls">
+            <button class="wctrl wctrl-min" title="Згорнути">
+              <svg width="10" height="2" viewBox="0 0 10 2"><rect x="0" y="0" width="10" height="2" fill="currentColor"/></svg>
+            </button>
+            <button class="wctrl wctrl-max" title="Розгорнути">
+              <svg width="10" height="10" viewBox="0 0 10 10"><rect x="0" y="0" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+            <button class="wctrl wctrl-close" title="Закрити">
+              <svg width="10" height="10" viewBox="0 0 10 10"><line x1="0" y1="0" x2="10" y2="10" stroke="currentColor" stroke-width="1.5"/><line x1="10" y1="0" x2="0" y2="10" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="win7-ribbon">
+          <div class="ribbon-group">
+            <span class="ribbon-label">Регіон</span>
+          </div>
+        </div>
+
+        <div class="win7-body">
+          <!-- Region buttons -->
+          <div class="region-buttons-wrap" id="regionButtons"></div>
+
+          <!-- KPI row -->
+          <div class="kpi-row" id="kpiGrid">
+
+            <div class="kpi-tile" id="tile-gdp">
+              <div class="kpi-tile-icon">
+                <img src="icons/gdp.png" alt="ВРП" class="kpi-icon-img" />
+              </div>
+              <div class="kpi-tile-info">
+                <span class="kpi-tile-label">ВРП регіону</span>
+                <span class="kpi-tile-value" id="val-gdp">—</span>
+                <span class="kpi-tile-unit">млн €</span>
+              </div>
+              <div class="kpi-tile-glow gdp-glow"></div>
+            </div>
+
+            <div class="kpi-tile" id="tile-salary">
+              <div class="kpi-tile-icon">
+                <img src="icons/money.png" alt="Зарплата" class="kpi-icon-img" />
+              </div>
+              <div class="kpi-tile-info">
+                <span class="kpi-tile-label">Середня зарплата</span>
+                <span class="kpi-tile-value" id="val-salary">—</span>
+                <span class="kpi-tile-unit">€ / міс</span>
+              </div>
+              <div class="kpi-tile-glow salary-glow"></div>
+            </div>
+
+            <div class="kpi-tile" id="tile-unemployment">
+              <div class="kpi-tile-icon">
+                <img src="icons/unemployment.png" alt="Безробіття" class="kpi-icon-img" />
+              </div>
+              <div class="kpi-tile-info">
+                <span class="kpi-tile-label">Безробіття</span>
+                <span class="kpi-tile-value" id="val-unemployment">—</span>
+                <span class="kpi-tile-unit">%</span>
+              </div>
+              <div class="kpi-tile-glow unemp-glow"></div>
+            </div>
+
+            <div class="kpi-tile" id="tile-population">
+              <div class="kpi-tile-icon">
+                <img src="icons/population.png" alt="Населення" class="kpi-icon-img" />
+              </div>
+              <div class="kpi-tile-info">
+                <span class="kpi-tile-label">Населення</span>
+                <span class="kpi-tile-value" id="val-population">—</span>
+                <span class="kpi-tile-unit">тис. осіб</span>
+              </div>
+              <div class="kpi-tile-glow pop-glow"></div>
+            </div>
+
+          </div><!-- /kpi-row -->
+        </div>
+
+        <div class="win7-statusbar">
+          <span id="statusRegionName">Регіон не обрано</span>
+          <span class="statusbar-sep"></span>
+          <span>Естонія · 15 регіонів</span>
+        </div>
+      </div><!-- /win-region -->
+
+      <!-- WINDOW: Графіки -->
+      <div class="win7-window" id="win-charts">
+        <div class="win7-titlebar">
+          <div class="win7-titlebar-left">
+            <div class="win7-app-icon">
+              <img src="icons/dashboard.png" alt="Аналітика" class="winicon-img" />
+            </div>
+            <span class="win7-title-text">Аналітика · <span id="titleChartRegion">—</span></span>
+          </div>
+          <div class="win7-window-controls">
+            <button class="wctrl wctrl-min">
+              <svg width="10" height="2" viewBox="0 0 10 2"><rect x="0" y="0" width="10" height="2" fill="currentColor"/></svg>
+            </button>
+            <button class="wctrl wctrl-max">
+              <svg width="10" height="10" viewBox="0 0 10 10"><rect x="0" y="0" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+            <button class="wctrl wctrl-close">
+              <svg width="10" height="10" viewBox="0 0 10 10"><line x1="0" y1="0" x2="10" y2="10" stroke="currentColor" stroke-width="1.5"/><line x1="10" y1="0" x2="0" y2="10" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="win7-ribbon">
+          <div class="ribbon-group">
+            <span class="ribbon-label">Показник</span>
+            <div class="metric-toggle" id="metricToggle">
+              <button class="metric-btn active" data-metric="salary">Зарплата</button>
+              <button class="metric-btn" data-metric="gdp">ВРП</button>
+              <button class="metric-btn" data-metric="unemployment">Безробіття</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="win7-body charts-body">
+          <div class="chart-pane">
+            <div class="chart-pane-header">
+              <span class="chart-pane-title">Динаміка показника <span id="dynamicMetricName">зарплати</span></span>
+              <span class="chart-pane-sub" id="chartRegionName">—</span>
+            </div>
+            <div class="chart-canvas-wrap">
+              <canvas id="lineChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-pane">
+            <div class="chart-pane-header">
+              <span class="chart-pane-title">Порівняння регіонів</span>
+              <span class="chart-pane-sub" id="barMetricLabel">за зарплатою</span>
+            </div>
+            <div class="chart-canvas-wrap">
+              <canvas id="barChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="win7-statusbar">
+          <span>Показник: <span id="statusMetric">Зарплата</span></span>
+          <span class="statusbar-sep"></span>
+          <span>Дані за 2019–2023</span>
+        </div>
+      </div><!-- /win-charts -->
+
+    </div><!-- /tab-dashboard -->
+
+    <!-- ===== TAB: COMPARE ===== -->
+    <div id="tab-compare" class="tab-section">
+      <div class="win7-window" id="win-compare">
+        <div class="win7-titlebar">
+          <div class="win7-titlebar-left">
+            <div class="win7-app-icon">
+              <img src="icons/compare.png" alt="Порівняння" class="winicon-img" />
+            </div>
+            <span class="win7-title-text">Порівняння регіонів</span>
+          </div>
+          <div class="win7-window-controls">
+            <button class="wctrl wctrl-min">
+              <svg width="10" height="2" viewBox="0 0 10 2"><rect x="0" y="0" width="10" height="2" fill="currentColor"/></svg>
+            </button>
+            <button class="wctrl wctrl-max">
+              <svg width="10" height="10" viewBox="0 0 10 10"><rect x="0" y="0" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+            <button class="wctrl wctrl-close">
+              <svg width="10" height="10" viewBox="0 0 10 10"><line x1="0" y1="0" x2="10" y2="10" stroke="currentColor" stroke-width="1.5"/><line x1="10" y1="0" x2="0" y2="10" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="win7-ribbon">
+          <div class="ribbon-group compare-selectors">
+            <div class="compare-field">
+              <span class="ribbon-label">Регіон A</span>
+              <select class="win7-select" id="compareA"></select>
+            </div>
+            <div class="vs-divider">VS</div>
+            <div class="compare-field">
+              <span class="ribbon-label">Регіон B</span>
+              <select class="win7-select" id="compareB"></select>
+            </div>
+          </div>
+        </div>
+
+        <div class="win7-body">
+          <div id="compareResult"></div>
+        </div>
+
+        <div class="win7-statusbar">
+          <span>Зелений = краще · Червоний = гірше</span>
+        </div>
+      </div>
+    </div><!-- /tab-compare -->
+
+  </div><!-- /desktop -->
+
+  <!-- FOOTER / NOTIFICATION AREA -->
+  <div class="win7-footer">
+    <div class="footer-tray">
+      <!-- estonia.png замість глобуса -->
+      <span class="tray-item">
+        <img src="icons/estonia.png" alt="Естонія" class="tray-icon-img" /> Естонія
+      </span>
+      <!-- folder.png замість емодзі -->
+      <span class="tray-item">
+        <img src="icons/folder.png" alt="EstData" class="tray-icon-img" /> EstData v1.0
+      </span>
+      <span class="tray-sep"></span>
+      <span class="tray-item tray-copy">Прототип агрегатора економічних даних регіонів. Естонія використана для демонстрації</span>
+    </div>
+    <div class="footer-show-desktop" title="Показати робочий стіл"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
