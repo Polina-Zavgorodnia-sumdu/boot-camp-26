@@ -1,0 +1,21 @@
+/* ============================================================
+   responsive.css — Адаптивність для мобільних пристроїв
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .kpi-grid  { grid-template-columns: repeat(2,1fr); }
+  .card-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .kpi-grid  { grid-template-columns: 1fr; }
+  .card-grid { grid-template-columns: 1fr; }
+  .win-window {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    left: 0 !important;
+    top: 0 !important;
+  }
+  #desktop { overflow: auto; }
+}

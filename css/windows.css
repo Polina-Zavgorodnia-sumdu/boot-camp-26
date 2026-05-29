@@ -1,0 +1,196 @@
+/* ============================================================
+   windows.css — Win98 оболонка: вікна, таскбар, меню
+   ============================================================ */
+
+/* ── TASKBAR ── */
+#taskbar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 32px;
+  background: var(--win-face);
+  border-top: 2px solid var(--win-highlight);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 4px;
+}
+#start-btn {
+  display: flex; align-items: center; gap: 4px;
+  padding: 2px 10px; height: 24px;
+  font-family: var(--font); font-size: 12px; font-weight: 700;
+  background: var(--win-face); cursor: pointer;
+}
+#start-btn:active, #start-btn.pressed {
+  border-color: var(--win-dark) var(--win-highlight) var(--win-highlight) var(--win-dark) !important;
+}
+.taskbar-sep {
+  width: 2px; height: 24px;
+  border-left: 1px solid var(--win-shadow);
+  border-right: 1px solid var(--win-highlight);
+  margin: 0 2px;
+}
+#taskbar-buttons { display: flex; gap: 2px; flex: 1; flex-wrap: wrap; }
+.tbar-btn {
+  display: flex; align-items: center; gap: 4px;
+  padding: 2px 8px; height: 24px;
+  min-width: 110px; max-width: 180px;
+  font-family: var(--font); font-size: 11px;
+  background: var(--win-face); cursor: pointer;
+  text-align: left; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.tbar-btn.active {
+  border-color: var(--win-dark) var(--win-highlight) var(--win-highlight) var(--win-dark) !important;
+  background: #bab8b0;
+}
+.tbar-btn:hover:not(.active) { background: #e2deda; }
+#tray { display: flex; align-items: center; gap: 4px; padding: 2px 6px; height: 24px; }
+#clock { font-family: var(--font); font-size: 11px; white-space: nowrap; padding: 0 4px; }
+
+/* ── START MENU ── */
+#start-menu {
+  position: fixed; bottom: 32px; left: 0;
+  width: 200px; background: var(--win-face);
+  border: 2px solid;
+  border-color: var(--win-highlight) var(--win-dark) var(--win-dark) var(--win-highlight);
+  z-index: 10000; display: none;
+}
+#start-menu.open { display: flex; }
+.start-menu-banner {
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  background: linear-gradient(180deg,#000080,#1084d0);
+  color: #fff; font-size: 18px; font-weight: 700;
+  padding: 8px 4px; letter-spacing: 2px; user-select: none;
+}
+.start-menu-items { flex: 1; padding: 2px 0; }
+.start-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 4px 8px; font-size: 11px; cursor: pointer; white-space: nowrap;
+}
+.start-item:hover { background: var(--blue); color: #fff; }
+.start-item .si-icon { font-size: 16px; width: 20px; text-align: center; }
+.start-sep { height: 1px; background: var(--win-shadow); margin: 2px 4px; }
+
+/* ── WINDOW ── */
+.win-window {
+  position: absolute; background: var(--win-face);
+  border: 2px solid;
+  border-color: var(--win-highlight) var(--win-dark) var(--win-dark) var(--win-highlight);
+  display: flex; flex-direction: column;
+  min-width: 200px; min-height: 100px; transition: box-shadow 0.1s;
+}
+.win-window.maximized { left: 0 !important; top: 0 !important; width: 100% !important; height: 100% !important; }
+
+/* ── TITLEBAR ── */
+.win-titlebar {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 20px; padding: 2px 3px 2px 5px;
+  background: var(--win-titlebar);
+  user-select: none; cursor: default; flex-shrink: 0;
+}
+.win-titlebar.inactive { background: var(--win-titlebar-in); }
+.win-titlebar-left { display: flex; align-items: center; gap: 4px; overflow: hidden; }
+.win-icon { font-size: 12px; flex-shrink: 0; }
+.win-title { font-size: 11px; font-weight: 700; color: var(--win-title-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.win-controls { display: flex; gap: 2px; flex-shrink: 0; }
+.wctrl {
+  width: 16px; height: 14px; font-size: 9px; font-weight: 700;
+  background: var(--win-face);
+  border: 2px solid; border-color: var(--win-highlight) var(--win-dark) var(--win-dark) var(--win-highlight);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  line-height: 1; padding: 0; font-family: var(--font);
+}
+.wctrl:active { border-color: var(--win-dark) var(--win-highlight) var(--win-highlight) var(--win-dark); }
+
+/* ── MENUBAR ── */
+.win-menubar {
+  display: flex; align-items: center; height: 20px; padding: 0 4px;
+  background: var(--win-face); border-bottom: 1px solid var(--win-shadow); flex-shrink: 0;
+}
+.mnu { padding: 2px 8px; font-size: 11px; cursor: pointer; }
+.mnu:hover { background: var(--blue); color: #fff; }
+.mnu.active { background: var(--blue); color: #fff; }
+
+/* ── TOOLBAR ── */
+.win-toolbar {
+  display: flex; align-items: center; gap: 4px; padding: 2px 4px;
+  background: var(--win-face);
+  border-bottom: 2px solid; border-color: var(--win-shadow) var(--win-highlight) var(--win-highlight) var(--win-shadow);
+  flex-shrink: 0; flex-wrap: wrap;
+}
+.tb-btn {
+  display: flex; align-items: center; gap: 3px;
+  padding: 1px 6px; height: 22px;
+  font-family: var(--font); font-size: 11px;
+  background: var(--win-face); cursor: pointer;
+}
+.tb-btn:hover { background: #e2deda; }
+.tb-btn:active, .tb-btn.active {
+  border-color: var(--win-dark) var(--win-highlight) var(--win-highlight) var(--win-dark) !important;
+  background: #bab8b0;
+}
+.tb-sep { width: 2px; height: 20px; border-left:1px solid var(--win-shadow); border-right:1px solid var(--win-highlight); margin:0 2px; }
+.tb-label { font-size: 11px; font-weight: 700; }
+
+/* ── BODY & STATUSBAR ── */
+.win-body { flex: 1; overflow: auto; background: var(--win-face); padding: 6px; }
+.win-statusbar {
+  display: flex; align-items: center; height: 20px; padding: 0 2px; gap: 2px;
+  background: var(--win-face); border-top: 1px solid var(--win-shadow); flex-shrink: 0;
+}
+.sb-panel { padding: 1px 6px; font-size: 11px; height: 16px; display: flex; align-items: center; white-space: nowrap; }
+.sb-panel:first-child { flex: 1; }
+
+/* ── WIN98 INPUTS ── */
+input[type="text"], input[type="search"], select, textarea {
+  height: 20px; background: #fff;
+  border: 2px solid; border-color: var(--win-dark) var(--win-highlight) var(--win-highlight) var(--win-dark);
+  font-family: var(--font); font-size: 11px; padding: 0 4px; outline: none; color: var(--text);
+}
+textarea { height: auto; resize: vertical; }
+select { cursor: pointer; }
+input[type="text"]:focus, input[type="search"]:focus, select:focus, textarea:focus {
+  outline: 1px dotted var(--blue); outline-offset: -1px;
+}
+
+/* ── WIN98 BUTTON ── */
+button.win-btn {
+  font-family: var(--font); font-size: 11px; background: var(--win-face);
+  border: 2px solid; border-color: var(--win-highlight) var(--win-dark) var(--win-dark) var(--win-highlight);
+  padding: 2px 12px; height: 23px; cursor: pointer; white-space: nowrap; min-width: 75px;
+}
+button.win-btn:active {
+  border-color: var(--win-dark) var(--win-highlight) var(--win-highlight) var(--win-dark);
+  padding: 3px 11px 1px 13px;
+}
+button.win-btn:focus { outline: 1px dotted var(--text); outline-offset: -4px; }
+button.win-btn.default-btn { border-color: var(--win-dark) var(--win-highlight) var(--win-highlight) var(--win-dark); border-width: 3px; }
+button.win-btn.primary { background: var(--win-face); font-weight: 700; }
+
+/* ── DIALOG ── */
+.win-dialog-overlay { position: fixed; inset: 0; background: transparent; z-index: 8000; display: none; }
+.win-dialog-overlay.open { display: block; }
+.win-dialog {
+  position: absolute; background: var(--win-face);
+  border: 2px solid; border-color: var(--win-highlight) var(--win-dark) var(--win-dark) var(--win-highlight);
+  min-width: 300px;
+}
+
+/* ── PROGRESS BAR ── */
+.progress-wrap {
+  height: 14px; border: 2px solid;
+  border-color: var(--win-dark) var(--win-highlight) var(--win-highlight) var(--win-dark);
+  background: #fff; overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: repeating-linear-gradient(90deg, var(--blue) 0 8px, #5050c0 8px 10px);
+  transition: width 0.3s;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 16px; height: 16px; }
+::-webkit-scrollbar-track { background: var(--win-face); }
+::-webkit-scrollbar-thumb { background: var(--win-face); border: 2px solid; border-color: var(--win-highlight) var(--win-dark) var(--win-dark) var(--win-highlight); }
+::-webkit-scrollbar-button { background: var(--win-face); border: 2px solid; border-color: var(--win-highlight) var(--win-dark) var(--win-dark) var(--win-highlight); height: 16px; width: 16px; }

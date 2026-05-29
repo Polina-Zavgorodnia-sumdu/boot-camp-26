@@ -1,0 +1,73 @@
+/* ============================================================
+   components.css — UI-компоненти: KPI, картки, tabs, форми
+   ============================================================ */
+
+/* ── TABS ── */
+.tab-row { display: flex; gap: 0; align-items: flex-end; margin-bottom: -1px; z-index: 1; position: relative; flex-wrap: wrap; }
+.tab-btn {
+  padding: 3px 12px; font-family: var(--font); font-size: 11px;
+  background: var(--win-face); cursor: pointer;
+  border: 2px solid; border-color: var(--win-highlight) var(--win-dark) var(--win-highlight) var(--win-highlight);
+  border-bottom: 2px solid var(--win-face); margin-right: 2px; position: relative; z-index: 1;
+}
+.tab-btn.active {
+  font-weight: 700; background: var(--win-face);
+  border-color: var(--win-highlight) var(--win-dark) var(--win-face) var(--win-highlight);
+  z-index: 2; margin-top: -2px; padding-top: 5px;
+}
+.tab-btn:not(.active):hover { background: #e2deda; }
+.tab-content-wrap { border: 2px solid; border-color: var(--win-dark) var(--win-highlight) var(--win-highlight) var(--win-dark); background: var(--win-face); padding: 8px; }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+/* ── KPI TILES ── */
+.kpi-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 6px; }
+.kpi-tile { border: 2px solid; border-color: var(--win-shadow) var(--win-highlight) var(--win-highlight) var(--win-shadow); background: #fff; padding: 8px; display: flex; align-items: center; gap: 8px; }
+.kpi-icon  { font-size: 20px; flex-shrink: 0; }
+.kpi-info  { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.kpi-label { font-size: 9px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); }
+.kpi-value { font-size: 18px; font-weight: 700; color: var(--blue); font-family: var(--font-mono); line-height: 1.1; }
+.kpi-unit  { font-size: 9px; color: var(--text-muted); }
+.kpi-trend { font-size: 9px; font-weight: 700; }
+.kpi-trend.up   { color: var(--green); }
+.kpi-trend.down { color: var(--red); }
+
+/* ── CATEGORY CARDS ── */
+.card-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+.cat-card { border: 2px solid; border-color: var(--win-shadow) var(--win-highlight) var(--win-highlight) var(--win-shadow); background: #fff; padding: 8px; cursor: pointer; }
+.cat-card:hover { background: #f4f2ee; }
+.cat-card-icon  { font-size: 24px; margin-bottom: 4px; }
+.cat-card-title { font-weight: 700; font-size: 12px; margin-bottom: 2px; }
+.cat-card-desc  { font-size: 10px; color: var(--text-muted); margin-bottom: 4px; line-height: 1.4; }
+.cat-card-meta  { font-size: 10px; color: var(--blue); }
+
+/* ── TREE VIEW ── */
+.tree-view { font-size: 11px; line-height: 1.8; padding: 4px; }
+.tree-item { display: flex; align-items: center; gap: 4px; cursor: pointer; padding: 1px 2px; }
+.tree-item:hover   { background: var(--blue); color: #fff; }
+.tree-item.selected{ background: var(--blue); color: #fff; }
+.tree-item .ti-icon{ font-size: 14px; flex-shrink: 0; }
+.tree-children { padding-left: 18px; }
+.tree-toggle { width: 10px; height: 10px; border: 1px solid var(--win-shadow); background: #fff; font-size: 9px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; }
+
+/* ── FORM ELEMENTS ── */
+.form-row { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+.form-row label { font-size: 11px; min-width: 100px; }
+.form-row input, .form-row select, .form-row textarea { flex: 1; }
+.form-section { margin-bottom: 12px; }
+.form-section-title { font-weight: 700; margin-bottom: 6px; padding-bottom: 2px; border-bottom: 1px solid var(--win-shadow); }
+
+/* ── API CONSOLE ── */
+.console-wrap { background: #000; color: #00ff00; font-family: var(--font-mono); font-size: 11px; padding: 8px; overflow: auto; border: 2px solid; border-color: var(--win-dark) var(--win-highlight) var(--win-highlight) var(--win-dark); }
+.console-line    { margin-bottom: 2px; line-height: 1.5; }
+.console-prompt  { color: #ffff00; }
+.console-response{ color: #00ff00; }
+.console-error   { color: #ff4444; }
+.console-comment { color: #888; }
+
+/* ── SEARCH DROPDOWN ── */
+#search-results { position: absolute; top: 100%; left: 0; right: 0; background: #fff; border: 2px solid; border-color: var(--win-dark) var(--win-highlight) var(--win-highlight) var(--win-dark); z-index: 100; display: none; }
+#theme-btn { font-family: var(--font); font-size: 11px; background: var(--win-face); }
+
+/* ── TOOLTIP ── */
+.tip { display: inline-block; background: #ffffcc; border: 1px solid var(--win-dark); padding: 2px 6px; font-size: 10px; }

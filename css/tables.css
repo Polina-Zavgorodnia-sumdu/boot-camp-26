@@ -1,0 +1,16 @@
+/* ============================================================
+   tables.css — Стилі таблиць даних
+   ============================================================ */
+
+.win-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+.win-table th {
+  background: var(--win-face); text-align: left;
+  padding: 2px 6px; font-weight: 700;
+  border: 1px solid var(--win-shadow); white-space: nowrap;
+  cursor: pointer; user-select: none;
+}
+.win-table th:hover { background: #e2deda; }
+.win-table td { padding: 2px 6px; border: 1px solid #d0ccc0; }
+.win-table tr:nth-child(even) td { background: #f0eeea; }
+.win-table tr:hover td { background: var(--blue); color: #fff; }
+.win-table tr.selected td { background: var(--blue); color: #fff; }

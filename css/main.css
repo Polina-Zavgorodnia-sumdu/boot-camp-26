@@ -1,0 +1,210 @@
+/* ============================================================
+   main.css — Базові стилі та CSS-змінні
+   ============================================================ */
+
+:root {
+  --win-face:        #d4d0c8;
+  --win-highlight:   #ffffff;
+  --win-shadow:      #808080;
+  --win-dark:        #404040;
+  --win-titlebar:    linear-gradient(90deg,#000080 0%,#1084d0 100%);
+  --win-titlebar-in: linear-gradient(90deg,#7b7b7b 0%,#a0a0a0 100%);
+  --win-title-text:  #ffffff;
+  --desktop-bg:      #008080;
+  --text:            #000000;
+  --text-muted:      #444444;
+  --blue:            #000080;
+  --green:           #008000;
+  --red:             #cc0000;
+  --white:           #ffffff;
+  --input-bg:        #ffffff;
+  --chart-bg:        #ffffff;
+  --table-even:      #f0eeea;
+  --table-border:    #d0ccc0;
+  --link-color:      #000080;
+  --link-hover:      #cc0000;
+  --font:            'Tahoma','MS Sans Serif','Arial',sans-serif;
+  --font-mono:       'Courier New',monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  font-family: var(--font);
+  font-size: 11px;
+  color: var(--text);
+  background: var(--desktop-bg);
+  overflow: hidden;
+}
+
+/* ── BEVELED BORDER CLASSES ── */
+.raised {
+  border: 2px solid;
+  border-color: var(--win-highlight) var(--win-dark) var(--win-dark) var(--win-highlight);
+}
+.sunken {
+  border: 2px solid;
+  border-color: var(--win-dark) var(--win-highlight) var(--win-highlight) var(--win-dark);
+}
+.inset {
+  border: 1px solid;
+  border-color: var(--win-shadow) var(--win-highlight) var(--win-highlight) var(--win-shadow);
+}
+
+/* ── DESKTOP ── */
+#desktop {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  bottom: 32px;
+  overflow: hidden;
+}
+
+/* ── PAGES ── */
+.page { display: none; width: 100%; height: 100%; }
+.page.active { display: block; }
+
+/* ── MISC UTILITIES ── */
+.sunken-sep { height: 2px; border-top: 1px solid var(--win-shadow); border-bottom: 1px solid var(--win-highlight); margin: 6px 0; }
+.flex-row   { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.flex-col   { display: flex; flex-direction: column; gap: 6px; }
+.two-col    { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.three-col  { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.full       { width: 100%; }
+
+.badge {
+  display: inline-block; padding: 1px 5px;
+  font-size: 9px; font-weight: 700;
+  background: var(--blue); color: #fff;
+}
+.badge.green { background: var(--green); }
+.badge.red   { background: var(--red); }
+
+a { color: var(--link-color); }
+a:hover { color: var(--link-hover); }
+hr.win-hr { border: none; border-top: 1px solid var(--win-shadow); border-bottom: 1px solid var(--win-highlight); margin: 6px 0; }
+
+/* ══════════════════════════════════════════════════════════
+   DARK THEME — повне покриття всіх елементів
+   ══════════════════════════════════════════════════════════ */
+
+/* --- Загальні текстові елементи --- */
+body.dark-mode { color: var(--text); }
+
+body.dark-mode * { color: inherit; }
+
+/* Явні кольори тексту що не успадковуються через var(--text) */
+body.dark-mode .kpi-label,
+body.dark-mode .kpi-unit,
+body.dark-mode .cat-card-desc,
+body.dark-mode .form-row label,
+body.dark-mode .form-section-title,
+body.dark-mode .sb-panel,
+body.dark-mode .tb-label,
+body.dark-mode .win-menubar,
+body.dark-mode .mnu,
+body.dark-mode li,
+body.dark-mode p,
+body.dark-mode div,
+body.dark-mode span:not(.badge):not(.win-title):not(.kpi-value):not(.kpi-trend) {
+  color: var(--text);
+}
+
+/* Приглушений текст */
+body.dark-mode .text-muted,
+body.dark-mode [style*="color:var(--text-muted)"],
+body.dark-mode .kpi-label,
+body.dark-mode .kpi-unit,
+body.dark-mode .cat-card-desc,
+body.dark-mode .cat-card-meta { color: var(--text-muted) !important; }
+
+/* Посилання */
+body.dark-mode a { color: #6ab0f5 !important; }
+body.dark-mode a:hover { color: #ff8888 !important; }
+
+/* --- Блоки та фони --- */
+body.dark-mode .chart-pane    { background: #1e1e1e; }
+body.dark-mode .cat-card      { background: #252525; color: var(--text); }
+body.dark-mode .cat-card:hover{ background: #2e2e2e; }
+body.dark-mode .kpi-tile       { background: #1e1e1e; }
+body.dark-mode .win-body       { background: var(--win-face); }
+body.dark-mode .tab-content-wrap { background: var(--win-face); }
+
+/* Панель з оновленнями на головній (inline style background:#fff) */
+body.dark-mode #home-updates   { background: #1e1e1e !important; }
+body.dark-mode #home-updates div { border-color: #444 !important; }
+
+/* Панель Dataset header (inline style background:#f0eeea) */
+body.dark-mode #page-dataset .win-body > div[style*="background:#f0eeea"],
+body.dark-mode #page-dataset .win-body > div[style*="background: #f0eeea"] {
+  background: #1e1e1e !important;
+}
+
+/* search-results dropdown */
+body.dark-mode #search-results { background: #252525 !important; }
+body.dark-mode #search-results div { border-color: #444 !important; color: var(--text); }
+
+/* --- Таблиці --- */
+body.dark-mode .win-table th       { background: #2a2a2a; color: var(--text); border-color: #555; }
+body.dark-mode .win-table th:hover { background: #333; }
+body.dark-mode .win-table td       { border-color: #444; color: var(--text); }
+body.dark-mode .win-table tr:nth-child(even) td { background: #222; }
+body.dark-mode .win-table tr:hover td  { background: #1a3a6a; color: #fff; }
+body.dark-mode .win-table tr.selected td { background: #1a3a6a; color: #fff; }
+
+/* --- Консоль --- */
+body.dark-mode .console-wrap { background: #0a0a0a; }
+
+/* --- Інпути та select --- */
+body.dark-mode input[type="text"],
+body.dark-mode input[type="search"],
+body.dark-mode select,
+body.dark-mode textarea {
+  background: #1a1a1a;
+  color: var(--text);
+  border-color: #555 #222 #222 #555;
+}
+
+/* --- Chart header --- */
+body.dark-mode .chart-header { border-color: #444; color: var(--text); }
+
+/* --- Форми --- */
+body.dark-mode .form-section-title { border-color: #444; }
+
+/* --- Tree view --- */
+body.dark-mode .tree-item      { color: var(--text); }
+body.dark-mode .tree-item:hover{ background: #1a3a6a; color: #fff; }
+body.dark-mode .tree-item.selected { background: #1a3a6a; color: #fff; }
+body.dark-mode .tree-toggle    { background: #1a1a1a; border-color: #555; }
+
+/* --- Tab buttons --- */
+body.dark-mode .tab-btn        { color: var(--text); background: var(--win-face); }
+body.dark-mode .tab-btn.active { background: var(--win-face); color: var(--text); }
+body.dark-mode .tab-btn:not(.active):hover { background: #3a3a3a; }
+
+/* --- Toolbar та кнопки --- */
+body.dark-mode .tb-btn         { color: var(--text); }
+body.dark-mode .tb-btn:hover   { background: #3a3a3a; }
+body.dark-mode .tb-btn.active  { background: #222; }
+body.dark-mode button.win-btn  { color: var(--text); background: var(--win-face); }
+body.dark-mode button.win-btn:hover { background: #3a3a3a; }
+body.dark-mode button.win-btn.primary { background: #003080; color: #fff; }
+
+/* --- Taskbar та start menu --- */
+body.dark-mode #taskbar        { background: var(--win-face); }
+body.dark-mode .tbar-btn       { color: var(--text); background: var(--win-face); }
+body.dark-mode .tbar-btn:hover:not(.active) { background: #3a3a3a; }
+body.dark-mode .tbar-btn.active{ background: #222; }
+body.dark-mode #start-btn      { color: var(--text); }
+body.dark-mode #clock          { color: var(--text); }
+body.dark-mode #start-menu     { background: var(--win-face); }
+body.dark-mode .start-item     { color: var(--text); }
+body.dark-mode .start-item:hover { background: #1a3a6a; color: #fff; }
+
+/* --- kpi-value: зберігає синій колір відповідно до теми --- */
+body.dark-mode .kpi-value { color: #6ab0f5; }
+
+/* --- Tooltip --- */
+body.dark-mode .tip { background: #2a2a1a; border-color: #666; color: var(--text); }
+
+
