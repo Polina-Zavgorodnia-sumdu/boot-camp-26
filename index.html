@@ -19,12 +19,14 @@
 
 <div id="desktop">
 
-  <!-- PAGE: HOME -->
+  <!-- ══════════════════════════════════════════════════════════
+       PAGE: HOME
+       ══════════════════════════════════════════════════════════ -->
   <div id="page-home" class="page active">
     <div class="win-window" style="left:10px;top:8px;width:calc(100% - 20px);height:calc(100% - 16px);">
       <div class="win-titlebar">
         <div class="win-titlebar-left">
-          <span class="win-icon">🖥️</span>
+          <span class="win-icon"><img src="assets/УкрДані.png" width="16" height="16" alt="УкрДані" style="image-rendering:pixelated;vertical-align:middle;"></span>
           <span class="win-title">УкрДані — Статистична Платформа України</span>
         </div>
         <div class="win-controls">
@@ -40,37 +42,39 @@
         <span class="mnu">Довідка</span>
       </div>
       <div class="win-toolbar">
-        <button class="tb-btn raised" onclick="navigate('home')">🏠</button>
-        <button class="tb-btn raised" onclick="navigate('statistics')">📊 Статистика</button>
-        <button class="tb-btn raised" onclick="navigate('dashboards')">📈 Дашборди</button>
-        <button class="tb-btn raised" onclick="navigate('dataset')">🗄️ Датасети</button>
+        <button class="tb-btn raised" onclick="navigate('home')"><img src="assets/УкрДані.png" width="16" height="16" alt="Головна" style="image-rendering:pixelated;vertical-align:middle;"></button>
+        <button class="tb-btn raised" onclick="navigate('statistics')"><img src="assets/statistics.png" width="16" height="16" alt="Статистика" style="image-rendering:pixelated;vertical-align:middle;"> Статистика</button>
+        <button class="tb-btn raised" onclick="navigate('map')"><img src="assets/map.png" width="16" height="16" alt="Карта" style="image-rendering:pixelated;vertical-align:middle;"> Карта</button>
+        <button class="tb-btn raised" onclick="navigate('compare')"><img src="assets/compare.png" width="16" height="16" alt="Порівняння" style="image-rendering:pixelated;vertical-align:middle;"> Порівняння</button>
         <span class="tb-sep"></span>
-        <button id="theme-btn" class="tb-btn raised" onclick="toggleTheme()">🌙 Темна тема</button>
+        <button id="theme-btn" class="tb-btn raised" onclick="toggleTheme()"><img src="assets/moon.png" width="16" height="16" alt="Тема" style="image-rendering:pixelated;vertical-align:middle;"> Темна тема</button>
         <span class="tb-sep"></span>
         <div style="position:relative;display:inline-block;">
-          <input type="search" id="main-search" placeholder="🔍 Пошук датасетів..." style="width:220px"
+          <input type="search" id="main-search" placeholder="Пошук датасетів..." style="width:220px"
             oninput="debounceSearch(this.value,'search-results')"
             onkeydown="if(event.key==='Enter')doSearch(this.value)"/>
-          <div id="search-results" style="position:absolute;top:100%;left:0;right:0;z-index:100;display:none;"></div>
+          <div id="search-results" style="position:absolute;top:100%;left:0;right:0;z-index:100;
+               background:var(--white);border:1px solid var(--win-shadow);display:none;
+               box-shadow:2px 2px 4px rgba(0,0,0,0.2);"></div>
         </div>
         <button class="tb-btn raised" onclick="doSearch(document.getElementById('main-search').value)">Знайти</button>
       </div>
       <div class="win-body" style="overflow:auto;">
-        <div style="font-weight:700;margin-bottom:6px;">🇺🇦 Ключові показники України (2024)</div>
+        <div style="font-weight:700;margin-bottom:6px;"><img src="assets/flag_ua.png" width="16" height="16" alt="Україна" style="image-rendering:pixelated;vertical-align:middle;"> Ключові показники України (2024)</div>
         <div class="kpi-grid" id="home-kpi" style="margin-bottom:12px;"></div>
         <div class="sunken-sep"></div>
         <div class="two-col" style="margin-bottom:12px;margin-top:8px;">
           <div>
-            <div style="font-weight:700;margin-bottom:4px;">📁 Категорії статистики</div>
+            <div style="font-weight:700;margin-bottom:4px;"><img src="assets/folder1.png" width="16" height="16" alt="Джерела" style="image-rendering:pixelated;vertical-align:middle;"> Категорії статистики</div>
             <div class="card-grid" id="home-categories"></div>
           </div>
           <div>
-            <div style="font-weight:700;margin-bottom:4px;">🕐 Останні оновлення</div>
+            <div style="font-weight:700;margin-bottom:4px;"><img src="assets/clock.png" width="16" height="16" alt="Час" style="image-rendering:pixelated;vertical-align:middle;"> Останні оновлення</div>
             <div class="inset" style="padding:4px;" id="home-updates"></div>
           </div>
         </div>
         <div class="sunken-sep"></div>
-        <div style="font-weight:700;margin-bottom:4px;">📊 Середня зарплата по регіонах — всі регіони (2024)</div>
+        <div style="font-weight:700;margin-bottom:4px;"><img src="assets/statistics.png" width="16" height="16" alt="Статистика" style="image-rendering:pixelated;vertical-align:middle;"> Середня зарплата по регіонах — всі регіони (2024)</div>
         <div class="chart-pane" style="height:auto;">
           <div id="home-chart-wrapper" style="height:260px;"></div>
         </div>
@@ -83,11 +87,13 @@
     </div>
   </div>
 
-  <!-- PAGE: STATISTICS -->
+  <!-- ══════════════════════════════════════════════════════════
+       PAGE: STATISTICS  (каталог + деталь датасету в одному)
+       ══════════════════════════════════════════════════════════ -->
   <div id="page-statistics" class="page">
     <div class="win-window" style="left:10px;top:8px;width:calc(100% - 20px);height:calc(100% - 16px);">
       <div class="win-titlebar">
-        <div class="win-titlebar-left"><span class="win-icon">📊</span><span class="win-title">Statistics Explorer — УкрДані</span></div>
+        <div class="win-titlebar-left"><span class="win-icon"><img src="assets/statistics.png" width="16" height="16" alt="Статистика" style="image-rendering:pixelated;vertical-align:middle;"></span><span class="win-title">Statistics Explorer — УкрДані</span></div>
         <div class="win-controls">
           <button class="wctrl raised" onclick="minimizePage()">_</button>
           <button class="wctrl raised" onclick="maximizePage('page-statistics')">□</button>
@@ -97,214 +103,168 @@
       <div class="win-menubar">
         <span class="mnu">Файл</span><span class="mnu">Правка</span><span class="mnu">Вигляд</span><span class="mnu">Довідка</span>
       </div>
-      <div class="win-toolbar">
+      <div class="win-toolbar" style="flex-wrap:nowrap;overflow:hidden;min-height:28px;">
         <button class="tb-btn raised" onclick="navigate('home')">⬅ Назад</button>
-        <span class="tb-sep"></span>
-        <span class="tb-label">Категорія:</span>
-        <select id="stat-cat" onchange="filterStatistics()" style="width:120px">
-          <option value="">Всі</option>
-          <option value="economy">Економіка</option>
-          <option value="demography">Демографія</option>
-          <option value="labor">Ринок праці</option>
-          <option value="inflation">Інфляція</option>
-          <option value="regional">Регіональна</option>
-          <option value="budget">Бюджет</option>
-        </select>
-        <span class="tb-sep"></span>
-        <input type="search" id="stat-search" placeholder="Пошук..." style="width:160px" oninput="filterStatistics()"/>
-        <span class="tb-sep"></span>
-        <button class="tb-btn raised" onclick="setStatView('grid')" id="vbtn-grid" title="Сітка">⊞</button>
-        <button class="tb-btn raised" onclick="setStatView('list')" id="vbtn-list" title="Список">☰</button>
-        <button class="tb-btn raised" onclick="setStatView('details')" id="vbtn-details" title="Деталі">≡</button>
+        <button class="tb-btn raised" id="stat-back-to-list-btn" style="display:none;"
+                onclick="closeDatasetDetail()"><img src="assets/table.png" width="16" height="16" alt="Список" style="image-rendering:pixelated;vertical-align:middle;"> До списку</button>
+        <div class="tb-sep"></div>
+        <!-- Тулбар каталогу: видимий за замовчуванням -->
+        <div id="stat-toolbar-catalog"
+             style="display:inline-flex;align-items:center;gap:4px;flex-wrap:nowrap;flex-shrink:0;">
+          <span class="tb-label">Категорія:</span>
+          <select id="stat-cat" onchange="filterStatistics()" style="width:120px">
+            <option value="">Всі</option>
+            <option value="economy">Економіка</option>
+            <option value="demography">Демографія</option>
+            <option value="labor">Ринок праці</option>
+            <option value="inflation">Інфляція</option>
+            <option value="regional">Регіональна</option>
+            <option value="budget">Бюджет</option>
+          </select>
+          <div class="tb-sep"></div>
+          <input type="search" id="stat-search" placeholder="Пошук..." style="width:160px" oninput="filterStatistics()"/>
+          <div class="tb-sep"></div>
+          <button class="tb-btn raised active" onclick="setStatView('grid')"    id="vbtn-grid"    title="Сітка">⊞</button>
+          <button class="tb-btn raised"        onclick="setStatView('list')"    id="vbtn-list"    title="Список">☰</button>
+          <button class="tb-btn raised"        onclick="setStatView('details')" id="vbtn-details" title="Деталі">≡</button>
+        </div>
+        <!-- Тулбар датасету: прихований за замовчуванням -->
+        <div id="stat-toolbar-dataset"
+             style="display:none;align-items:center;gap:4px;flex-shrink:0;">
+          <button class="tb-btn raised" onclick="exportCurrentDataset('csv')"><img src="assets/disk.png" width="16" height="16" alt="Зберегти" style="image-rendering:pixelated;vertical-align:middle;"> CSV</button>
+          <button class="tb-btn raised" onclick="exportCurrentDataset('json')"><img src="assets/paper.png" width="16" height="16" alt="Файл" style="image-rendering:pixelated;vertical-align:middle;"> JSON</button>
+          <button class="tb-btn raised" onclick="exportCurrentDataset('excel')"><img src="assets/xlsx.png" width="16" height="16" alt="Excel" style="image-rendering:smooth;vertical-align:middle;"> Excel</button>
+        </div>
       </div>
-      <div class="win-body" style="display:flex;gap:0;padding:0;">
-        <div style="width:180px;border-right:2px solid var(--win-shadow);background:var(--win-face);overflow:auto;padding:4px;flex-shrink:0;">
+
+      <div class="win-body" style="display:flex;gap:0;padding:0;overflow:hidden;">
+
+        <!-- Ліва панель: дерево категорій (прихована при відкритому датасеті) -->
+        <div id="stat-left-panel" style="width:180px;border-right:2px solid var(--win-shadow);
+                    background:var(--win-face);overflow:auto;padding:4px;flex-shrink:0;">
           <div style="font-size:10px;font-weight:700;margin-bottom:4px;text-transform:uppercase;">Папки</div>
           <div class="tree-view" id="stat-tree"></div>
         </div>
-        <div style="flex:1;overflow:auto;padding:8px;">
-          <div id="stat-cards-container"></div>
-        </div>
-      </div>
+
+        <!-- Права частина: каталог АБО деталь датасету -->
+        <div style="flex:1;overflow:auto;padding:0;">
+
+          <!-- КАТАЛОГ (за замовчуванням) -->
+          <div id="stat-catalog-view" style="padding:8px;">
+            <div id="stat-cards-container"></div>
+          </div>
+
+          <!-- ДЕТАЛЬ ДАТАСЕТУ (прихована поки не вибрано) -->
+          <div id="stat-dataset-view" style="display:none;height:100%;display:none;flex-direction:column;padding:0;">
+
+            <!-- Метадані датасету -->
+            <div style="padding:6px 8px;background:var(--win-face);border-bottom:1px solid var(--win-shadow);font-size:11px;flex-shrink:0;">
+              <span style="font-weight:700;" id="ds-title">—</span>
+              &nbsp;·&nbsp;<span class="badge" id="ds-cat-badge"></span>
+              &nbsp;·&nbsp;Джерело: <a id="ds-source-link" href="https://stat.gov.ua" target="_blank">stat.gov.ua</a>
+              &nbsp;·&nbsp;Оновлено: <span id="ds-updated">01.2024</span>
+              &nbsp;·&nbsp;<span id="ds-records-meta" style="color:var(--text-muted);"></span>
+            </div>
+
+            <!-- Таби датасету -->
+            <div style="padding:4px 8px 0;flex:1;overflow:hidden;display:flex;flex-direction:column;">
+              <div class="tab-row" id="ds-tabs">
+                <button class="tab-btn active" onclick="switchDsTab('charts',this)"><img src="assets/visuals.png" width="16" height="16" alt="Графік" style="image-rendering:pixelated;vertical-align:middle;"> Графіки</button>
+                <button class="tab-btn"        onclick="switchDsTab('table',this)"><img src="assets/table.png" width="16" height="16" alt="Список" style="image-rendering:pixelated;vertical-align:middle;"> Таблиця</button>
+                <button class="tab-btn"        onclick="switchDsTab('api',this)"><img src="assets/api.png" width="16" height="16" alt="API Explorer" style="image-rendering:pixelated;vertical-align:middle;"> API</button>
+                <button class="tab-btn"        onclick="switchDsTab('sources',this)"><img src="assets/folder1.png" width="16" height="16" alt="Джерела" style="image-rendering:pixelated;vertical-align:middle;"> Джерела</button>
+              </div>
+              <div class="tab-content-wrap" style="overflow:auto;flex:1;">
+
+                <!-- CHARTS -->
+                <div id="ds-tab-charts" class="tab-pane active">
+                  <div style="display:flex;flex-direction:column;gap:10px;padding-top:6px;">
+                    <div class="chart-pane">
+                      <div class="chart-header" id="ds-chart-title">Завантаження даних…</div>
+                      <div class="chart-wrap" style="height:280px;"><canvas id="ds-line-chart"></canvas></div>
+                    </div>
+                    <div class="chart-pane">
+                      <div class="chart-header" id="ds-bar-chart-title">Порівняння / Структура</div>
+                      <div id="ds-bar-wrap" style="height:280px;"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- TABLE -->
+                <div id="ds-tab-table" class="tab-pane">
+                  <div style="margin:4px 0;display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+                    <input type="search" id="ds-table-search" placeholder="Пошук в таблиці..."
+                           style="width:200px" oninput="filterTable(this.value)"/>
+                    <span class="tb-label">Рік:</span>
+                    <select id="ds-year" onchange="loadTableFromApi()" style="width:80px">
+                      <option value="">Всі</option>
+                      <option>2024</option><option>2023</option><option>2022</option>
+                      <option>2021</option><option>2020</option><option>2019</option>
+                      <option>2018</option><option>2010</option><option>2004</option><option>1998</option>
+                    </select>
+                    <span id="ds-table-count" style="font-size:10px;"></span>
+                  </div>
+                  <div style="overflow:auto;max-height:360px;">
+                    <table class="win-table" id="ds-table">
+                      <thead><tr id="ds-table-head"></tr></thead>
+                      <tbody id="ds-table-body">
+                        <tr><td colspan="6" style="text-align:center;padding:20px;">Завантаження…</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div style="display:flex;gap:4px;margin-top:4px;align-items:center;">
+                    <button class="win-btn" onclick="tablePage(-1)">◀</button>
+                    <span id="ds-page-info" style="font-size:11px;">Стор. 1</span>
+                    <button class="win-btn" onclick="tablePage(1)">▶</button>
+                  </div>
+                </div>
+
+                <!-- API -->
+                <div id="ds-tab-api" class="tab-pane">
+                  <div style="font-weight:700;margin-bottom:6px;"><img src="assets/api.png" width="16" height="16" alt="Посилання" style="image-rendering:pixelated;vertical-align:middle;"> API Endpoint для цього датасету</div>
+                  <div class="console-wrap" style="margin-bottom:8px;font-size:11px;" id="ds-api-endpoint-block"></div>
+                  <div style="font-weight:700;margin-bottom:4px;">Параметри:</div>
+                  <table class="win-table" style="margin-bottom:8px;" id="ds-api-params-table"></table>
+                  <div style="font-weight:700;margin-bottom:4px;">Приклад відповіді:</div>
+                  <div class="console-wrap" style="height:140px;overflow:auto;" id="ds-api-response-block"></div>
+                </div>
+
+                <!-- SOURCES -->
+                <div id="ds-tab-sources" class="tab-pane">
+                  <div class="form-section">
+                    <div class="form-section-title"><img src="assets/folder1.png" width="16" height="16" alt="Джерела" style="image-rendering:pixelated;vertical-align:middle;"> Первинні джерела цього датасету</div>
+                    <div id="ds-sources-content"></div>
+                  </div>
+                  <div style="margin-top:8px;font-size:10px;" id="ds-license-block">
+                    Ліцензія: Creative Commons CC BY 4.0
+                  </div>
+                </div>
+
+              </div><!-- /tab-content-wrap -->
+            </div>
+          </div><!-- /stat-dataset-view -->
+
+        </div><!-- /права частина -->
+      </div><!-- /win-body flex -->
+
       <div class="win-statusbar">
         <span class="sb-panel inset" id="stat-status">Завантаження...</span>
-        <span class="sb-panel inset">Statistics Explorer</span>
+        <span class="sb-panel inset" id="ds-rows-count"></span>
         <span class="sb-panel inset">УкрДані v1.0</span>
       </div>
     </div>
   </div>
 
-  <!-- PAGE: DATASET -->
-  <div id="page-dataset" class="page">
+  <!-- ══════════════════════════════════════════════════════════
+       PAGE: MAP
+       ══════════════════════════════════════════════════════════ -->
+  <div id="page-map" class="page">
     <div class="win-window" style="left:10px;top:8px;width:calc(100% - 20px);height:calc(100% - 16px);">
       <div class="win-titlebar">
-        <div class="win-titlebar-left"><span class="win-icon">🗄️</span><span class="win-title" id="dataset-win-title">Dataset — УкрДані</span></div>
+        <div class="win-titlebar-left"><span class="win-icon"><img src="assets/map.png" width="16" height="16" alt="Карта" style="image-rendering:pixelated;vertical-align:middle;"></span><span class="win-title">Карта регіонів — УкрДані</span></div>
         <div class="win-controls">
           <button class="wctrl raised" onclick="minimizePage()">_</button>
-          <button class="wctrl raised" onclick="maximizePage('page-dataset')">□</button>
-          <button class="wctrl raised" style="font-weight:900" onclick="navigate('statistics')">✕</button>
-        </div>
-      </div>
-      <div class="win-menubar">
-        <span class="mnu">Файл</span><span class="mnu">Правка</span><span class="mnu">Вигляд</span><span class="mnu">Довідка</span>
-      </div>
-      <div class="win-toolbar">
-        <button class="tb-btn raised" onclick="navigate('statistics')">⬅ Назад</button>
-        <span class="tb-sep"></span>
-        <span class="tb-label">Показник:</span>
-        <select id="ds-metric" onchange="updateDataset()" style="width:110px">
-          <option value="salary">Зарплата</option>
-          <option value="gdp">ВРП</option>
-          <option value="unemployment">Безробіття</option>
-          <option value="population">Населення</option>
-        </select>
-        <span class="tb-sep"></span>
-        <button class="tb-btn raised" onclick="exportData('csv')">💾 CSV</button>
-        <button class="tb-btn raised" onclick="exportData('json')">📄 JSON</button>
-        <button class="tb-btn raised" onclick="exportData('excel')">📊 Excel</button>
-      </div>
-      <div class="win-body" style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
-        <div style="padding:6px 8px;background:var(--win-face);border-bottom:1px solid var(--win-shadow);font-size:11px;">
-          <span style="font-weight:700;" id="ds-title">Середня заробітна плата по регіонах України</span>
-          &nbsp;·&nbsp;<span class="badge" id="ds-cat-badge">Ринок праці</span>
-          &nbsp;·&nbsp;Джерело: <a href="https://stat.gov.ua" target="_blank">stat.gov.ua</a>
-          &nbsp;·&nbsp;Оновлено: <span id="ds-updated">01.2024</span>
-        </div>
-        <div style="padding:6px 8px 0;">
-          <div class="tab-row" id="ds-tabs">
-            <button class="tab-btn active" onclick="switchDsTab('charts',this)">📈 Графіки</button>
-            <button class="tab-btn" onclick="switchDsTab('table',this)">📋 Таблиця</button>
-            <button class="tab-btn" onclick="switchDsTab('api',this)">⚙️ API</button>
-            <button class="tab-btn" onclick="switchDsTab('sources',this)">📁 Джерела</button>
-          </div>
-          <div class="tab-content-wrap" style="overflow:auto;max-height:calc(100vh - 260px);">
-
-            <!-- CHARTS tab -->
-            <div id="ds-tab-charts" class="tab-pane active">
-              <div style="margin-bottom:6px;display:flex;gap:4px;flex-wrap:wrap;align-items:center;">
-                <button class="tb-btn raised active" id="chart-type-line" onclick="switchChartType('line',this)">📈 Динаміка</button>
-                <button class="tb-btn raised" id="chart-type-bar" onclick="switchChartType('bar',this)">📊 Стовп (динаміка)</button>
-                <button class="tb-btn raised" id="chart-type-pie" onclick="switchChartType('pie',this)">🥧 Кругова</button>
-              </div>
-              <!-- Рядок вибору року для порівняльної стовпчикової діаграми -->
-              <div id="ds-bar-year-row" style="margin-bottom:6px;display:flex;gap:6px;align-items:center;">
-                <span class="tb-label">Рік для порівняння регіонів:</span>
-                <select id="ds-bar-year" onchange="updateDataset()" style="width:80px">
-                  <option>2024</option><option>2023</option><option>2022</option><option>2021</option>
-                  <option>2020</option><option>2019</option><option>2018</option><option>2017</option>
-                  <option>2016</option><option>2015</option><option>2014</option><option>2013</option>
-                  <option>2012</option><option>2011</option><option>2010</option><option>2008</option>
-                  <option>2005</option><option>2002</option><option>2000</option><option>1998</option>
-                </select>
-              </div>
-              <div style="display:flex;flex-direction:column;gap:10px;">
-                <div class="chart-pane">
-                  <div class="chart-header" id="ds-chart-title">Динаміка — Україна (1998–2024)</div>
-                  <div class="chart-wrap" style="height:300px;"><canvas id="ds-line-chart"></canvas></div>
-                </div>
-                <div class="chart-pane">
-                  <div class="chart-header">Порівняння всіх регіонів</div>
-                  <div id="ds-bar-wrap" style="height:320px;"></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- TABLE tab -->
-            <div id="ds-tab-table" class="tab-pane">
-              <div style="margin-bottom:4px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
-                <input type="search" id="ds-table-search" placeholder="Пошук в таблиці..." style="width:200px" oninput="filterTable(this.value)"/>
-                <span class="tb-label">Рік:</span>
-                <select id="ds-year" onchange="generateTableData();renderTable();" style="width:80px">
-                  <option value="">Всі</option>
-                  <option>2024</option><option>2023</option><option>2022</option>
-                  <option>2021</option><option>2020</option><option>2019</option>
-                  <option>2018</option><option>2010</option><option>2004</option><option>1998</option>
-                </select>
-                <span id="ds-table-count" style="font-size:10px;"></span>
-              </div>
-              <div style="overflow:auto;max-height:350px;">
-                <table class="win-table" id="ds-table">
-                  <thead><tr>
-                    <th onclick="sortTable(0)">Рік ▲</th>
-                    <th onclick="sortTable(1)">Регіон</th>
-                    <th onclick="sortTable(2)">Показник</th>
-                    <th onclick="sortTable(3)">Значення</th>
-                    <th onclick="sortTable(4)">Одиниця</th>
-                    <th onclick="sortTable(5)">Зміна %</th>
-                  </tr></thead>
-                  <tbody id="ds-table-body"></tbody>
-                </table>
-              </div>
-              <div style="display:flex;gap:4px;margin-top:4px;align-items:center;">
-                <button class="win-btn" onclick="tablePage(-1)">◀</button>
-                <span id="ds-page-info" style="font-size:11px;">Стор. 1</span>
-                <button class="win-btn" onclick="tablePage(1)">▶</button>
-              </div>
-            </div>
-
-            <!-- API tab -->
-            <div id="ds-tab-api" class="tab-pane">
-              <div style="font-weight:700;margin-bottom:6px;">🔗 API Endpoint</div>
-              <div class="console-wrap" style="margin-bottom:8px;font-size:11px;">
-                <div class="console-line console-comment"># GET запит</div>
-                <div class="console-line console-prompt">GET https://api.ukrdata.gov.ua/v1/statistics</div>
-                <div class="console-line console-comment"># Параметри</div>
-                <div class="console-line">?region=kyiv&amp;year=2024&amp;metric=salary&amp;format=json</div>
-              </div>
-              <table class="win-table" style="margin-bottom:8px;">
-                <thead><tr><th>Параметр</th><th>Тип</th><th>Опис</th><th>Приклад</th></tr></thead>
-                <tbody>
-                  <tr><td>region</td><td>string</td><td>Код регіону або "all"</td><td>kyiv</td></tr>
-                  <tr><td>year</td><td>integer</td><td>Рік (1998–2024)</td><td>2024</td></tr>
-                  <tr><td>metric</td><td>string</td><td>salary|gdp|unemployment|population</td><td>salary</td></tr>
-                  <tr><td>format</td><td>string</td><td>json|csv|xlsx</td><td>json</td></tr>
-                  <tr><td>page</td><td>integer</td><td>Сторінка (за замовч. 1)</td><td>1</td></tr>
-                </tbody>
-              </table>
-              <div class="console-wrap" style="height:120px;">
-                <div class="console-line console-response">{"status":"ok","data":[</div>
-                <div class="console-line console-response">&nbsp;&nbsp;{"year":2024,"region":"Київ","metric":"salary","value":28600,"unit":"грн"},</div>
-                <div class="console-line console-response">&nbsp;&nbsp;{"year":2024,"region":"Харків","metric":"salary","value":18200,"unit":"грн"}</div>
-                <div class="console-line console-response">],"total":25,"page":1}</div>
-              </div>
-            </div>
-
-            <!-- SOURCES tab -->
-            <div id="ds-tab-sources" class="tab-pane">
-              <div class="form-section">
-                <div class="form-section-title">📁 Первинні джерела</div>
-                <table class="win-table">
-                  <thead><tr><th>Джерело</th><th>Тип</th><th>Дата</th><th>Посилання</th></tr></thead>
-                  <tbody>
-                    <tr><td>Держстат України</td><td>Офіційна статистика</td><td>2024</td><td><a href="https://stat.gov.ua" target="_blank">stat.gov.ua</a></td></tr>
-                    <tr><td>Мінфін України</td><td>Бюджетні дані</td><td>2024</td><td><a href="https://minfin.gov.ua" target="_blank">minfin.gov.ua</a></td></tr>
-                    <tr><td>НБУ</td><td>Монетарна статистика</td><td>2024</td><td><a href="https://bank.gov.ua" target="_blank">bank.gov.ua</a></td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <div style="margin-top:8px;font-size:10px;">
-                Ліцензія: Creative Commons CC BY 4.0
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="win-statusbar">
-        <span class="sb-panel inset" id="ds-status">Dataset завантажено</span>
-        <span class="sb-panel inset" id="ds-rows-count">0 записів</span>
-        <span class="sb-panel inset">УкрДані v1.0</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- PAGE: DASHBOARDS -->
-  <div id="page-dashboards" class="page">
-    <div class="win-window" style="left:10px;top:8px;width:calc(100% - 20px);height:calc(100% - 16px);">
-      <div class="win-titlebar">
-        <div class="win-titlebar-left"><span class="win-icon">📈</span><span class="win-title">Дашборди — УкрДані</span></div>
-        <div class="win-controls">
-          <button class="wctrl raised" onclick="minimizePage()">_</button>
-          <button class="wctrl raised" onclick="maximizePage('page-dashboards')">□</button>
+          <button class="wctrl raised" onclick="maximizePage('page-map')">□</button>
           <button class="wctrl raised" style="font-weight:900" onclick="navigate('home')">✕</button>
         </div>
       </div>
@@ -312,117 +272,124 @@
       <div class="win-toolbar">
         <button class="tb-btn raised" onclick="navigate('home')">⬅ Назад</button>
         <span class="tb-sep"></span>
-        <span class="tb-label">Рік для регіональних діаграм:</span>
-        <select id="db-year" onchange="updateDashboard()" style="width:80px">
-          <option value="2024">2024</option><option value="2023">2023</option>
-          <option value="2022">2022</option><option value="2021">2021</option>
-          <option value="2020">2020</option><option value="2019">2019</option>
-          <option value="2018">2018</option><option value="2017">2017</option>
-          <option value="2016">2016</option><option value="2015">2015</option>
-          <option value="2014">2014</option><option value="2013">2013</option>
-          <option value="2012">2012</option><option value="2010">2010</option>
-          <option value="2008">2008</option><option value="2005">2005</option>
-          <option value="2000">2000</option><option value="1998">1998</option>
-        </select>
-        <span class="tb-sep"></span>
-        <button class="tb-btn raised" onclick="exportData('csv')">💾 Експорт CSV</button>
+        <span class="tb-label">Показник:</span>
+        <div id="map-controls" style="display:inline-flex;gap:4px;"></div>
       </div>
-      <div class="win-body" style="padding:6px;overflow:auto;">
-        <div class="tab-row">
-          <button class="tab-btn active" onclick="switchDbTab('economic',this)">💰 Економіка</button>
-          <button class="tab-btn" onclick="switchDbTab('demographic',this)">👥 Демографія</button>
-          <button class="tab-btn" onclick="switchDbTab('employment',this)">👔 Зайнятість</button>
-          <button class="tab-btn" onclick="switchDbTab('inflation',this)">📉 Інфляція</button>
+
+      <div class="win-body" style="display:flex;gap:0;padding:0;overflow:hidden;">
+
+        <!-- Основна область: карта -->
+        <div style="flex:1;overflow:hidden;display:flex;flex-direction:column;padding:6px;">
+          <div id="map-svg-container"
+               style="flex:1;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center;color:var(--text-muted);"><img src="assets/hourglass.png" width="16" height="16" alt="Очікування" style="image-rendering:pixelated;vertical-align:middle;"> Завантаження карти…</div>
+          </div>
+          <!-- Легенда -->
+          <div id="map-legend"
+               style="padding:6px 8px;background:var(--win-face);border-top:1px solid var(--win-shadow);font-size:10px;">
+          </div>
         </div>
-        <div class="tab-content-wrap">
 
-          <!-- ECONOMIC TAB -->
-          <div id="db-tab-economic" class="tab-pane active">
-            <div class="kpi-grid" id="db-kpi-economic" style="margin-bottom:8px;"></div>
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <div class="chart-pane">
-                <div class="chart-header">ВРП по всіх регіонах (млн грн) — вибраний рік</div>
-                <div id="db-gdp-wrap" style="height:320px;"></div>
-              </div>
-              <div class="chart-pane">
-                <div class="chart-header">Динаміка зарплати по регіонах (1998–2024)</div>
-                <div class="chart-wrap" style="height:300px;"><canvas id="db-salary-hist-chart"></canvas></div>
-              </div>
-            </div>
+        <!-- Права панель: деталь регіону -->
+        <div id="map-detail-panel"
+             style="width:220px;border-left:2px solid var(--win-shadow);padding:8px;
+                    overflow:auto;flex-shrink:0;display:none;font-size:11px;">
+          <div style="color:var(--text-muted);font-size:10px;">
+            Наведіть на регіон або клікніть для деталей
           </div>
-
-          <!-- DEMOGRAPHIC TAB -->
-          <div id="db-tab-demographic" class="tab-pane">
-            <div class="kpi-grid" id="db-kpi-demographic" style="margin-bottom:8px;grid-template-columns:repeat(3,1fr);"></div>
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <div class="chart-pane">
-                <div class="chart-header">Населення по всіх регіонах (тис. осіб) — вибраний рік</div>
-                <div id="db-pop-wrap" style="height:320px;"></div>
-              </div>
-              <div class="chart-pane">
-                <div class="chart-header">Динаміка населення України (1998–2024)</div>
-                <div class="chart-wrap" style="height:300px;"><canvas id="db-pop-hist-chart"></canvas></div>
-              </div>
-              <div class="chart-pane">
-                <div class="chart-header">Розподіл населення по регіонах — кругова</div>
-                <div id="db-pop-pie-wrap" style="height:360px;"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- EMPLOYMENT TAB -->
-          <div id="db-tab-employment" class="tab-pane">
-            <div class="kpi-grid" id="db-kpi-employment" style="margin-bottom:8px;grid-template-columns:repeat(3,1fr);"></div>
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <div class="chart-pane">
-                <div class="chart-header">Рівень безробіття по всіх регіонах (%)</div>
-                <div id="db-unemp-wrap" style="height:320px;"></div>
-              </div>
-              <div class="chart-pane">
-                <div class="chart-header">Динаміка безробіття в Україні (1998–2024)</div>
-                <div class="chart-wrap" style="height:300px;"><canvas id="db-unemp-hist-chart"></canvas></div>
-              </div>
-              <div class="chart-pane">
-                <div class="chart-header">Розподіл безробіття по регіонах — кругова</div>
-                <div id="db-unemp-pie-wrap" style="height:360px;"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- INFLATION TAB -->
-          <div id="db-tab-inflation" class="tab-pane">
-            <div class="kpi-grid" id="db-kpi-inflation" style="margin-bottom:8px;grid-template-columns:repeat(3,1fr);"></div>
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <div class="chart-pane">
-                <div class="chart-header">Індекс інфляції (%, 1998–2024)</div>
-                <div class="chart-wrap" style="height:300px;"><canvas id="db-inflation-chart"></canvas></div>
-              </div>
-              <div class="chart-pane">
-                <div class="chart-header">Реальна зарплата (індекс, 2010=100)</div>
-                <div class="chart-wrap" style="height:300px;"><canvas id="db-real-salary-chart"></canvas></div>
-              </div>
-              <div class="chart-pane">
-                <div class="chart-header">Номінальний ВВП України (млн грн, 1998–2024)</div>
-                <div id="db-gdp-line-wrap" style="height:300px;"></div>
-              </div>
-            </div>
-          </div>
-
         </div>
+
       </div>
+
       <div class="win-statusbar">
-        <span class="sb-panel inset">Дашборд завантажено</span>
-        <span class="sb-panel inset">Дані оновлено: 01.2024</span>
+        <span class="sb-panel inset">Карта регіонів України · 2024</span>
+        <span class="sb-panel inset">АР Крим — окупована, даних немає</span>
         <span class="sb-panel inset">УкрДані v1.0</span>
       </div>
     </div>
   </div>
 
-  <!-- PAGE: API -->
+  <!-- ══════════════════════════════════════════════════════════
+       PAGE: COMPARE
+       ══════════════════════════════════════════════════════════ -->
+  <div id="page-compare" class="page">
+    <div class="win-window" style="left:10px;top:8px;width:calc(100% - 20px);height:calc(100% - 16px);">
+      <div class="win-titlebar">
+        <div class="win-titlebar-left"><span class="win-icon"><img src="assets/compare.png" width="16" height="16" alt="Порівняння" style="image-rendering:pixelated;vertical-align:middle;"></span><span class="win-title">Порівняння регіонів — УкрДані</span></div>
+        <div class="win-controls">
+          <button class="wctrl raised" onclick="minimizePage()">_</button>
+          <button class="wctrl raised" onclick="maximizePage('page-compare')">□</button>
+          <button class="wctrl raised" style="font-weight:900" onclick="navigate('home')">✕</button>
+        </div>
+      </div>
+      <div class="win-menubar"><span class="mnu">Файл</span><span class="mnu">Вигляд</span><span class="mnu">Довідка</span></div>
+      <div class="win-toolbar">
+        <button class="tb-btn raised" onclick="navigate('home')">⬅ Назад</button>
+        <span class="tb-sep"></span>
+        <button class="tb-btn raised" onclick="renderCompareResult()"><img src="assets/compare.png" width="16" height="16" alt="Порівняти" style="image-rendering:smooth;vertical-align:middle;"> Порівняти</button>
+        <button class="tb-btn raised" onclick="resetCompare()"><img src="assets/bin.png" width="16" height="16" alt="bin" style="image-rendering:smooth;vertical-align:middle;"> Скинути вибір</button>
+        <span class="tb-sep"></span>
+        <span style="font-size:10px;color:var(--text-muted);">Дані: 2005–2024 · ВРП 2005–2013 включно з АР Крим та Севастополем</span>
+      </div>
+
+      <div class="win-body" style="overflow:auto;padding:8px;">
+
+        <!-- Верхня панель: вибір регіонів + показників -->
+        <div class="inset" style="padding:8px;margin-bottom:8px;">
+          <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
+
+            <!-- Вибір регіонів -->
+            <div>
+              <div style="font-weight:700;font-size:11px;margin-bottom:6px;">Регіони (до 4-х):</div>
+              <div id="compare-region-selectors" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
+            </div>
+
+            <!-- Вибір показників -->
+            <div>
+              <div style="font-weight:700;font-size:11px;margin-bottom:6px;">Показники:</div>
+              <div id="compare-metric-picker" style="display:flex;gap:12px;flex-wrap:wrap;"></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Результати порівняння -->
+        <div id="compare-result-area">
+          <!-- заповнюється з compare.js -->
+        </div>
+
+        <!-- Таблиця -->
+        <div id="compare-table" style="margin-top:8px;"></div>
+
+        <!-- Графіки -->
+        <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap;">
+          <div class="chart-pane" style="flex:1;min-width:300px;">
+            <div class="chart-header">Нормалізоване порівняння</div>
+            <div class="chart-wrap" style="height:280px;"><canvas id="compare-bar-chart"></canvas></div>
+          </div>
+          <div class="chart-pane" style="flex:1;min-width:300px;">
+            <div class="chart-header">Радарна діаграма</div>
+            <div id="compare-radar-wrap" style="height:280px;"><canvas id="compare-radar-chart"></canvas></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="win-statusbar">
+        <span class="sb-panel inset">Порівняння регіонів</span>
+        <span class="sb-panel inset">Зарплата · ВРП · Безробіття · Населення</span>
+        <span class="sb-panel inset">УкрДані v1.0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       PAGE: API EXPLORER
+       ══════════════════════════════════════════════════════════ -->
   <div id="page-api" class="page">
     <div class="win-window" style="left:10px;top:8px;width:calc(100% - 20px);height:calc(100% - 16px);">
       <div class="win-titlebar">
-        <div class="win-titlebar-left"><span class="win-icon">⚙️</span><span class="win-title">API Explorer — УкрДані</span></div>
+        <div class="win-titlebar-left"><span class="win-icon"><img src="assets/api.png" width="16" height="16" alt="API Explorer" style="image-rendering:pixelated;vertical-align:middle;"></span><span class="win-title">API Explorer — УкрДані</span></div>
         <div class="win-controls">
           <button class="wctrl raised" onclick="minimizePage()">_</button>
           <button class="wctrl raised" onclick="maximizePage('page-api')">□</button>
@@ -432,59 +399,175 @@
       <div class="win-menubar"><span class="mnu">Файл</span><span class="mnu">Довідка</span></div>
       <div class="win-toolbar">
         <button class="tb-btn raised" onclick="navigate('home')">⬅ Назад</button>
+        <span class="tb-sep"></span>
+        <span class="tb-label" id="api-status-label" style="color:var(--text-muted);font-size:10px;"><img src="assets/hourglass.png" width="16" height="16" alt="Очікування" style="image-rendering:pixelated;vertical-align:middle;"> Перевірка підключення…</span>
       </div>
+
       <div class="win-body" style="display:flex;gap:0;padding:0;overflow:hidden;">
-        <div style="width:200px;border-right:2px solid var(--win-shadow);padding:4px;overflow:auto;flex-shrink:0;">
-          <div style="font-size:10px;font-weight:700;text-transform:uppercase;margin-bottom:4px;">Endpoints</div>
+        <!-- Ліва панель -->
+        <div style="width:210px;border-right:2px solid var(--win-shadow);padding:4px;overflow:auto;flex-shrink:0;">
+          <div style="font-size:10px;font-weight:700;text-transform:uppercase;margin-bottom:4px;color:var(--text-muted);">Endpoints</div>
           <div id="api-endpoint-list"></div>
+          <div style="margin-top:10px;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--text-muted);">Base URL</div>
+          <div style="font-size:9px;font-family:var(--font-mono);padding:3px;
+                      background:var(--inset-bg,#e8e4dc);border:1px solid var(--win-shadow);
+                      margin-top:2px;word-break:break-all;">http://localhost:8000</div>
+          <div style="margin-top:6px;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--text-muted);">Документація</div>
+          <a href="http://localhost:8000/docs"  target="_blank" style="font-size:10px;display:block;margin-top:2px;"><img src="assets/paper.png" width="16" height="16" alt="Файл" style="image-rendering:pixelated;vertical-align:middle;"> Swagger UI →</a>
+          <a href="http://localhost:8000/redoc" target="_blank" style="font-size:10px;display:block;margin-top:2px;"><img src="assets/book.png" width="16" height="16" alt="Документація" style="image-rendering:pixelated;vertical-align:middle;"> ReDoc →</a>
         </div>
-        <div style="flex:1;overflow:auto;padding:8px;">
+
+        <!-- Права панель -->
+        <div style="flex:1;overflow:auto;padding:8px;display:flex;flex-direction:column;gap:8px;">
           <div id="api-detail"></div>
-          <div style="margin-top:8px;">
-            <div style="font-weight:700;margin-bottom:4px;">🧪 Спробувати запит</div>
+          <div class="sunken-sep"></div>
+          <div>
+            <div style="font-weight:700;margin-bottom:6px;"><img src="assets/flask.png" width="16" height="16" alt="Тест" style="image-rendering:pixelated;vertical-align:middle;"> Спробувати запит</div>
             <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:6px;">
               <span class="tb-label">Endpoint:</span>
-              <select id="api-try-endpoint" onchange="updateApiPreview()" style="width:110px">
-                <option value="statistics">statistics</option>
-                <option value="regions">regions</option>
-                <option value="categories">categories</option>
-                <option value="datasets">datasets</option>
+              <select id="api-try-endpoint" onchange="onApiEndpointChange()" style="width:220px">
+                <option value="statistics">GET /v1/statistics</option>
+                <option value="history">GET /v1/statistics/history</option>
+                <option value="regions">GET /v1/regions</option>
+                <option value="region_id">GET /v1/regions/{id}</option>
+                <option value="datasets">GET /v1/datasets</option>
+                <option value="dataset_item">GET /v1/datasets/{id}</option>
+                <option value="categories">GET /v1/categories</option>
+                <option value="sources">GET /v1/sources</option>
+                <option value="dataset_data">GET /v1/dataset-data/{id}</option>
+                <option value="contact">POST /v1/contact</option>
+                <option value="health">GET /health</option>
               </select>
-              <span class="tb-label">Регіон:</span>
-              <select id="api-try-region" onchange="updateApiPreview()" style="width:120px">
-                <option value="">all</option>
-                <option value="kyiv">kyiv</option>
-                <option value="kharkiv">kharkiv</option>
-                <option value="lviv">lviv</option>
-              </select>
-              <span class="tb-label">Рік:</span>
-              <select id="api-try-year" onchange="updateApiPreview()" style="width:80px">
-                <option>2024</option><option>2023</option><option>2022</option><option>2020</option><option>2018</option>
-              </select>
+
+              <span id="api-param-metric-wrap" style="display:flex;gap:4px;align-items:center;">
+                <span class="tb-label">Metric:</span>
+                <select id="api-try-metric" onchange="updateApiPreview()" style="width:120px">
+                  <option value="salary">salary</option>
+                  <option value="gdp">gdp</option>
+                  <option value="unemployment">unemployment</option>
+                  <option value="population">population</option>
+                  <option value="inflation">inflation</option>
+                </select>
+              </span>
+
+              <span id="api-param-region-wrap" style="display:flex;gap:4px;align-items:center;">
+                <span class="tb-label" id="api-param-region-label">Region:</span>
+                <select id="api-try-region" onchange="updateApiPreview()" style="width:180px"></select>
+              </span>
+
+              <span id="api-param-sort_by-wrap" style="display:none;gap:4px;align-items:center;">
+                <span class="tb-label">Sort:</span>
+                <select id="api-try-sort-by" onchange="updateApiPreview()" style="width:110px">
+                  <option value="salary">salary</option>
+                  <option value="gdp">gdp</option>
+                  <option value="unemployment">unemployment</option>
+                  <option value="population">population</option>
+                  <option value="name">name</option>
+                </select>
+              </span>
+
+              <span id="api-param-order-wrap" style="display:none;gap:4px;align-items:center;">
+                <span class="tb-label">Order:</span>
+                <select id="api-try-order" onchange="updateApiPreview()" style="width:70px">
+                  <option value="desc">desc</option>
+                  <option value="asc">asc</option>
+                </select>
+              </span>
+
+              <span id="api-param-cat-wrap" style="display:none;gap:4px;align-items:center;">
+                <span class="tb-label">Cat:</span>
+                <select id="api-try-cat" onchange="updateApiPreview()" style="width:110px">
+                  <option value="">—</option>
+                  <option value="economy">economy</option>
+                  <option value="labor">labor</option>
+                  <option value="demography">demography</option>
+                  <option value="inflation">inflation</option>
+                  <option value="regional">regional</option>
+                  <option value="budget">budget</option>
+                </select>
+              </span>
+
+              <span id="api-param-search-wrap" style="display:none;gap:4px;align-items:center;">
+                <span class="tb-label">Search:</span>
+                <input id="api-try-search" type="text" placeholder="назва датасету"
+                       oninput="updateApiPreview()" style="width:140px;font-size:11px;">
+              </span>
+
+              <span id="api-param-source_type-wrap" style="display:none;gap:4px;align-items:center;">
+                <span class="tb-label">Type:</span>
+                <select id="api-try-source-type" onchange="updateApiPreview()" style="width:160px">
+                  <option value="">—</option>
+                  <option value="Офіційна статистика">Офіційна статистика</option>
+                  <option value="Фінансові дані">Фінансові дані</option>
+                  <option value="Міжнародна статистика">Міжнародна статистика</option>
+                  <option value="Агрегований портал">Агрегований портал</option>
+                </select>
+              </span>
+
+              <span id="api-param-year-wrap" style="display:flex;gap:4px;align-items:center;">
+                <span class="tb-label">Year:</span>
+                <select id="api-try-year" onchange="updateApiPreview()" style="width:70px">
+                  <option value="">—</option>
+                  <option>2024</option><option>2023</option><option>2022</option>
+                  <option>2021</option><option>2020</option><option>2018</option>
+                  <option>2015</option><option>2010</option><option>2005</option><option>2000</option>
+                </select>
+              </span>
+
+              <span id="api-param-id-wrap" style="display:flex;gap:4px;align-items:center;">
+                <span class="tb-label">ID:</span>
+                <select id="api-try-id" onchange="updateApiPreview()" style="width:70px">
+                  <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                  <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                  <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+                  <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                </select>
+              </span>
+
+              <span id="api-param-format-wrap" style="display:flex;gap:4px;align-items:center;">
+                <span class="tb-label">Format:</span>
+                <select id="api-try-format" onchange="updateApiPreview()" style="width:65px">
+                  <option>json</option><option>csv</option>
+                </select>
+              </span>
+
+              <span id="api-param-contact-wrap" style="display:none;gap:6px;align-items:center;flex-wrap:wrap;width:100%;">
+                <input id="api-try-contact-name" type="text" placeholder="Ім'я" oninput="updateApiPreview()" style="width:120px;font-size:11px;">
+                <input id="api-try-contact-email" type="email" placeholder="email@example.com" oninput="updateApiPreview()" style="width:160px;font-size:11px;">
+                <input id="api-try-contact-message" type="text" placeholder="Повідомлення (мін. 10 символів)" oninput="updateApiPreview()" style="width:280px;font-size:11px;">
+              </span>
+
               <button class="win-btn primary" onclick="tryApi()">▶ Виконати</button>
             </div>
-            <div class="console-wrap" style="font-size:10px;margin-bottom:4px;padding:4px 8px;">
-              GET <span id="api-preview-url"></span>
+
+            <div class="console-wrap" style="font-size:10px;margin-bottom:4px;padding:4px 8px;min-height:22px;font-family:var(--font-mono);">
+              <span id="api-preview-method" style="color:#ffff00;">GET</span>
+              <span id="api-preview-url" style="color:#88ccff;"></span>
+              <span id="api-preview-body" style="display:none;color:#aaa;margin-left:6px;"></span>
             </div>
-            <div class="console-wrap" id="api-console" style="height:200px;overflow:auto;font-size:10px;">
-              <div class="console-line console-comment"># Натисніть ▶ Виконати для симульованого запиту</div>
+            <div class="console-wrap" id="api-console" style="height:240px;overflow:auto;font-size:10px;">
+              <div class="console-line console-comment"># Оберіть ендпоінт і натисніть ▶ Виконати</div>
+              <div class="console-line console-comment"># Всі запити виконуються до реального бекенду (localhost:8000)</div>
             </div>
           </div>
         </div>
       </div>
+
       <div class="win-statusbar">
         <span class="sb-panel inset">API Explorer</span>
-        <span class="sb-panel inset">Base URL: https://api.ukrdata.gov.ua/v1</span>
+        <span class="sb-panel inset" id="api-statusbar-url">Base URL: http://localhost:8000/v1</span>
         <span class="sb-panel inset">УкрДані v1.0</span>
       </div>
     </div>
   </div>
 
-  <!-- PAGE: SOURCES -->
+  <!-- ══════════════════════════════════════════════════════════
+       PAGE: SOURCES
+       ══════════════════════════════════════════════════════════ -->
   <div id="page-sources" class="page">
     <div class="win-window" style="left:10px;top:8px;width:calc(100% - 20px);height:calc(100% - 16px);">
       <div class="win-titlebar">
-        <div class="win-titlebar-left"><span class="win-icon">📁</span><span class="win-title">File Manager — Джерела даних</span></div>
+        <div class="win-titlebar-left"><span class="win-icon"><img src="assets/folder1.png" width="16" height="16" alt="Джерела" style="image-rendering:pixelated;vertical-align:middle;"></span><span class="win-title">File Manager — Джерела даних</span></div>
         <div class="win-controls">
           <button class="wctrl raised" onclick="minimizePage()">_</button>
           <button class="wctrl raised" onclick="maximizePage('page-sources')">□</button>
@@ -495,7 +578,7 @@
       <div class="win-toolbar">
         <button class="tb-btn raised" onclick="navigate('home')">⬅ Назад</button>
         <span class="tb-sep"></span>
-        <span class="tb-label">📁 Мій Комп'ютер › УкрДані › Джерела</span>
+        <span class="tb-label"><img src="assets/folder1.1.png" width="16" height="16" alt="folder "> Мій Комп'ютер › УкрДані › Джерела</span>
       </div>
       <div class="win-body" style="display:flex;gap:0;padding:0;">
         <div style="width:200px;border-right:2px solid var(--win-shadow);padding:4px;overflow:auto;flex-shrink:0;">
@@ -519,11 +602,13 @@
     </div>
   </div>
 
-  <!-- PAGE: ABOUT -->
+  <!-- ══════════════════════════════════════════════════════════
+       PAGE: ABOUT
+       ══════════════════════════════════════════════════════════ -->
   <div id="page-about" class="page">
     <div class="win-window" style="left:10px;top:8px;width:calc(100% - 20px);height:calc(100% - 16px);">
       <div class="win-titlebar">
-        <div class="win-titlebar-left"><span class="win-icon">ℹ️</span><span class="win-title">Про проєкт — УкрДані</span></div>
+        <div class="win-titlebar-left"><span class="win-icon"><img src="assets/about.png" width="16" height="16" alt="Про проєкт" style="image-rendering:pixelated;vertical-align:middle;"></span><span class="win-title">Про проєкт — УкрДані</span></div>
         <div class="win-controls">
           <button class="wctrl raised" onclick="minimizePage()">_</button>
           <button class="wctrl raised" onclick="maximizePage('page-about')">□</button>
@@ -535,80 +620,142 @@
         <button class="tb-btn raised" onclick="navigate('home')">⬅ Назад</button>
       </div>
       <div class="win-body" style="overflow:auto;">
-        <div style="display:flex;gap:12px;margin-bottom:12px;">
-          <div style="font-size:48px;">🇺🇦</div>
+        <div style="display:flex;gap:12px;margin-bottom:12px;align-items:center;">
+          <div style="font-size:48px;"><img src="assets/flag_ua.png" width="32" height="32" alt="Україна" style="image-rendering:pixelated;vertical-align:middle;"></div>
           <div>
             <div style="font-size:16px;font-weight:700;margin-bottom:4px;">УкрДані v1.0</div>
-            <div style="font-size:11px;margin-bottom:6px;">Ukrainian Statistical Data Platform</div>
+            <div style="font-size:11px;margin-bottom:6px;color:var(--text-muted);">Ukrainian Statistical Data Platform</div>
             <div style="font-size:11px;max-width:600px;line-height:1.6;">
-              Відкрита платформа статистичних даних регіонів України. Мета — зробити офіційну економічну статистику доступною, зрозумілою та придатною для аналізу.
+              Відкрита платформа статистичних даних регіонів України. Мета — зробити офіційну економічну
+              статистику доступною, зрозумілою та придатною для аналізу через зручний веб-інтерфейс і REST API.
             </div>
           </div>
         </div>
         <div class="sunken-sep"></div>
         <div class="tab-row">
-          <button class="tab-btn active" onclick="switchAboutTab('mission',this)">🎯 Місія</button>
-          <button class="tab-btn" onclick="switchAboutTab('methodology',this)">📐 Методологія</button>
-          <button class="tab-btn" onclick="switchAboutTab('tech',this)">🔧 Технології</button>
-          <button class="tab-btn" onclick="switchAboutTab('team',this)">👥 Команда</button>
-          <button class="tab-btn" onclick="switchAboutTab('contact',this)">✉️ Контакт</button>
+          <button class="tab-btn active" onclick="switchAboutTab('mission',this)"><img src="assets/target.png" width="16" height="16" alt="Ціль" style="image-rendering:pixelated;vertical-align:middle;"> Місія</button>
+          <button class="tab-btn" onclick="switchAboutTab('methodology',this)"><img src="assets/лінійка.png" width="16" height="16" alt="Розмітка" style="image-rendering:pixelated;vertical-align:middle;"> Методологія</button>
+          <button class="tab-btn" onclick="switchAboutTab('tech',this)"><img src="assets/tech.png" width="16" height="16" alt="Технології" style="image-rendering:pixelated;vertical-align:middle;"> Технології</button>
+          <button class="tab-btn" onclick="switchAboutTab('author',this)"><img src="assets/author.png" width="16" height="16" alt="author" style="image-rendering:pixelated;vertical-align:middle;"> Авторка</button>
+          <button class="tab-btn" onclick="switchAboutTab('contact',this)"><img src="assets/letter.png" width="16" height="16" alt="Пошта" style="image-rendering:pixelated;vertical-align:middle;"> Контакт</button>
         </div>
         <div class="tab-content-wrap">
+
           <div id="about-tab-mission" class="tab-pane active">
-            <div class="form-section-title">🎯 Місія та цілі</div>
+            <div class="form-section-title"><img src="assets/target.png" width="16" height="16" alt="Ціль" style="image-rendering:pixelated;vertical-align:middle;"> Місія та цілі</div>
             <ul style="font-size:11px;line-height:2;padding-left:20px;">
               <li>Зробити офіційну статистику доступною для громадян, журналістів та дослідників</li>
-              <li>Забезпечити зручну API-доступність до публічних даних</li>
-              <li>Візуалізувати тенденції розвитку регіонів України</li>
-              <li>Підтримувати принципи відкритих даних (Open Data)</li>
-              <li>Сприяти прозорості публічної статистики</li>
+              <li>Забезпечити доступність до публічних даних через REST API</li>
+              <li>Візуалізувати тенденції розвитку регіонів України за 1998–2024 рр.</li>
+              <li>Підтримувати принципи відкритих даних (Open Data / CC BY 4.0)</li>
+              <li>Сприяти прозорості публічної статистики та її популяризації</li>
             </ul>
           </div>
+
           <div id="about-tab-methodology" class="tab-pane">
-            <div class="form-section-title">📐 Методологія</div>
+            <div class="form-section-title"><img src="assets/лінійка.png" width="16" height="16" alt="Розмітка" style="image-rendering:pixelated;vertical-align:middle;"> Методологія збору даних</div>
             <table class="win-table">
               <thead><tr><th>Показник</th><th>Джерело</th><th>Частота</th><th>Методологія</th></tr></thead>
               <tbody>
                 <tr><td>Середня зарплата</td><td>Держстат</td><td>Щомісяця</td><td>Нарахована до вирахування податків</td></tr>
-                <tr><td>ВРП регіону</td><td>Держстат</td><td>Щорічно</td><td>У поточних цінах, млн грн</td></tr>
-                <tr><td>Рівень безробіття</td><td>МОП / Держстат</td><td>Щоквартально</td><td>За методологією МОП, % від ЕАН</td></tr>
-                <tr><td>Інфляція (ІСЦ)</td><td>Держстат</td><td>Щомісяця</td><td>Індекс споживчих цін</td></tr>
+                <tr><td>ВРП / ВВП</td><td>Держстат</td><td>Щорічно</td><td>У поточних цінах, млн грн; СНР-2008</td></tr>
+                <tr><td>Безробіття</td><td>МОП / Держстат</td><td>Щоквартально</td><td>За методологією МОП, % від ЕАН</td></tr>
+                <tr><td>Інфляція (ІСЦ)</td><td>Держстат</td><td>Щомісяця</td><td>Індекс споживчих цін, грудень до грудня</td></tr>
                 <tr><td>Населення</td><td>Держстат</td><td>Щорічно</td><td>Наявне населення на 1 січня, тис. осіб</td></tr>
+                <tr><td>Держбюджет</td><td>Мінфін</td><td>Щорічно</td><td>Зведений держбюджет, млрд грн</td></tr>
+                <tr><td>Зовнішня торгівля</td><td>Держстат / НБУ</td><td>Щорічно</td><td>Товари та послуги, млрд USD</td></tr>
+                <tr><td>Індекс цін виробників</td><td>Держстат</td><td>Щомісяця</td><td>ІЦВ промислової продукції, % зміна</td></tr>
               </tbody>
             </table>
           </div>
+
           <div id="about-tab-tech" class="tab-pane">
-            <div class="form-section-title">🔧 Технічний стек</div>
+            <div class="form-section-title"><img src="assets/tech.png" width="16" height="16" alt="Технології" style="image-rendering:pixelated;vertical-align:middle;"> Технічний стек</div>
+            <div style="margin-bottom:8px;font-size:10px;color:var(--text-muted);">
+              Повний стек від UI до бази даних — без сторонніх фреймворків на фронтенді.
+            </div>
             <div class="card-grid">
-              <div class="cat-card"><div class="cat-card-icon">🌐</div><div class="cat-card-title">HTML5 / CSS3</div><div class="cat-card-desc">Семантична розмітка, CSS Variables, Flexbox/Grid</div></div>
-              <div class="cat-card"><div class="cat-card-icon">⚡</div><div class="cat-card-title">Vanilla JavaScript</div><div class="cat-card-desc">ES6+, модульний підхід, debounce, Blob API</div></div>
-              <div class="cat-card"><div class="cat-card-icon">📊</div><div class="cat-card-title">Chart.js 4</div><div class="cat-card-desc">Лінійні, стовпчасті, кругові графіки</div></div>
+              <div class="cat-card">
+                <div class="cat-card-icon"><img src="assets/htmlcss.png" width="32" height="32" alt="Веб" style="image-rendering:pixelated;vertical-align:middle;"></div>
+                <div class="cat-card-title">HTML5 / CSS3</div>
+                <div class="cat-card-desc">Семантична розмітка, CSS Variables для тем, Flexbox/Grid, Win98-стиль інтерфейс</div>
+              </div>
+              <div class="cat-card">
+                <div class="cat-card-icon"><img src="assets/js.png" width="32" height="32" alt="Швидко" style="image-rendering:pixelated;vertical-align:middle;"></div>
+                <div class="cat-card-title">Vanilla JavaScript (ES6+)</div>
+                <div class="cat-card-desc">SPA-архітектура без фреймворків: роутер, стан, debounce, Blob API, async/await, fetch()</div>
+              </div>
+              <div class="cat-card">
+                <div class="cat-card-icon"><img src="assets/chartjs.png" width="32" height="32" alt="Статистика" style="image-rendering:pixelated;vertical-align:middle;"></div>
+                <div class="cat-card-title">Chart.js 4</div>
+                <div class="cat-card-desc">Лінійні, стовпчасті, кільцеві, накопичені, радарні графіки; dual-axis; динамічне оновлення</div>
+              </div>
+              <div class="cat-card">
+                <div class="cat-card-icon"><img src="assets/python.png" width="32" height="32" alt="Python" style="image-rendering:pixelated;vertical-align:middle;"></div>
+                <div class="cat-card-title">Python 3.12 + FastAPI</div>
+                <div class="cat-card-desc">Асинхронний REST API; Swagger UI (/docs) та ReDoc; валідація Pydantic; CORS middleware</div>
+              </div>
+              <div class="cat-card">
+                <div class="cat-card-icon"><img src="assets/sqlite.png" width="32" height="32" alt="База даних" style="image-rendering:pixelated;vertical-align:middle;"></div>
+                <div class="cat-card-title">SQLite + SQLAlchemy 2</div>
+                <div class="cat-card-desc">Async ORM (aiosqlite); 15 таблиць; єдиний файл ukrdata.db; легкий перехід на PostgreSQL</div>
+              </div>
+              <div class="cat-card">
+                <div class="cat-card-icon"><img src="assets/uvicorn.png" width="32" height="32" alt="Запуск" style="image-rendering:pixelated;vertical-align:middle;"></div>
+                <div class="cat-card-title">Uvicorn</div>
+                <div class="cat-card-desc">ASGI-сервер для FastAPI; hot-reload у режимі розробки (--reload)</div>
+              </div>
+            </div>
+            <div style="margin-top:10px;">
+              <div class="form-section-title"><img src="assets/package.png" width="16" height="16" alt="Пакет" style="image-rendering:pixelated;vertical-align:middle;"> Залежності бекенду</div>
+              <table class="win-table" style="max-width:500px;">
+                <thead><tr><th>Пакет</th><th>Версія</th><th>Призначення</th></tr></thead>
+                <tbody>
+                  <tr><td style="font-family:var(--font-mono)">fastapi</td><td>≥0.111</td><td>Web-фреймворк / REST API</td></tr>
+                  <tr><td style="font-family:var(--font-mono)">uvicorn[standard]</td><td>≥0.29</td><td>ASGI-сервер</td></tr>
+                  <tr><td style="font-family:var(--font-mono)">sqlalchemy</td><td>≥2.0</td><td>Async ORM</td></tr>
+                  <tr><td style="font-family:var(--font-mono)">aiosqlite</td><td>≥0.20</td><td>Async-драйвер SQLite</td></tr>
+                  <tr><td style="font-family:var(--font-mono)">python-multipart</td><td>≥0.0.9</td><td>Обробка форм / завантажень</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
-          <div id="about-tab-team" class="tab-pane">
-            <div class="form-section-title">👥 Команда проєкту</div>
-            <table class="win-table">
-              <thead><tr><th>Роль</th><th>Напрям</th><th>GitHub</th></tr></thead>
-              <tbody>
-                <tr><td>Data Engineer</td><td>Дані, ETL</td><td>github.com/ukrdata</td></tr>
-                <tr><td>Frontend Developer</td><td>UI/UX, JS</td><td>github.com/ukrdata</td></tr>
-                <tr><td>Backend Developer</td><td>API, DB</td><td>github.com/ukrdata</td></tr>
-              </tbody>
-            </table>
+
+          <div id="about-tab-author" class="tab-pane">
+            <div class="form-section-title"><img src="assets/author.png" width="16" height="16" alt="author" style="image-rendering:pixelated;vertical-align:middle;"> Авторка проєкту</div>
+            <div style="display:flex;gap:16px;align-items:flex-start;margin-top:4px;">
+              <img src="assets/avatar.png" alt="Аватар" width="80" height="80"
+                   style="border:2px solid var(--win-shadow);"
+                   onerror="this.style.display='none'"/>
+              <div>
+                <div style="font-size:14px;font-weight:700;margin-bottom:4px;">Pop Heart</div>
+                <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">Розробниця · Дизайнерка</div>
+              </div>
+            </div>
+            <div style="margin-top:12px;padding:8px;background:var(--inset-bg,#e8e4dc);
+                        border:1px solid var(--win-shadow);font-size:11px;max-width:540px;line-height:1.6;">
+              <img src="assets/pin.png" width="16" height="16" alt="Закріплено" style="image-rendering:pixelated;vertical-align:middle;"> Проєкт створений як навчальний для виробничої практики. Дані надаються відповідно до принципів
+              Open Data та ліцензії CC BY 4.0.
+            </div>
           </div>
+
           <div id="about-tab-contact" class="tab-pane">
-            <div class="form-section-title">✉️ Зворотний зв'язок</div>
+            <div class="form-section-title"><img src="assets/letter.png" width="16" height="16" alt="Пошта" style="image-rendering:pixelated;vertical-align:middle;"> Зворотний зв'язок</div>
             <div style="max-width:400px;">
               <div class="form-row"><label>Ім'я:</label><input type="text" id="contact-name" placeholder="Ваше ім'я"/></div>
               <div class="form-row"><label>Email:</label><input type="text" id="contact-email" placeholder="email@example.com"/></div>
-              <div class="form-row" style="align-items:flex-start;"><label>Повідомлення:</label><textarea id="contact-msg" placeholder="Ваше повідомлення..." style="height:80px;"></textarea></div>
+              <div class="form-row" style="align-items:flex-start;">
+                <label>Повідомлення:</label>
+                <textarea id="contact-msg" placeholder="Ваше повідомлення..." style="height:80px;"></textarea>
+              </div>
               <div style="margin-top:6px;display:flex;gap:6px;">
-                <button class="win-btn primary" onclick="submitContact()">✉️ Надіслати</button>
+                <button class="win-btn primary" onclick="submitContact()"><img src="assets/letter.png" width="16" height="16" alt="Пошта" style="image-rendering:pixelated;vertical-align:middle;"> Надіслати</button>
                 <button class="win-btn" onclick="clearContact()">✕ Очистити</button>
               </div>
               <div id="contact-status" style="margin-top:6px;font-size:11px;"></div>
             </div>
           </div>
+
         </div>
       </div>
       <div class="win-statusbar">
@@ -621,17 +768,17 @@
 
 </div><!-- /desktop -->
 
-<!-- TASKBAR -->
+<!-- ══════════════════════════════════════════════════════════
+     TASKBAR
+     ══════════════════════════════════════════════════════════ -->
 <div id="taskbar">
   <button id="start-btn" class="raised" onclick="toggleStartMenu()">
-    <span>🪟</span> <span>Пуск</span>
+    <span><img src="assets/test.png" width="16" height="16" alt="Вікно" style="image-rendering:pixelated;vertical-align:middle;"></span> <span>Пуск</span>
   </button>
   <div class="taskbar-sep"></div>
   <div id="taskbar-buttons"></div>
   <div class="taskbar-sep"></div>
   <div id="tray" class="inset">
-    <span title="Мережа">🌐</span>
-    <span title="Гучність">🔊</span>
     <span id="clock">00:00</span>
   </div>
 </div>
@@ -640,30 +787,51 @@
 <div id="start-menu" class="raised">
   <div class="start-menu-banner">УкрДані</div>
   <div class="start-menu-items">
-    <div class="start-item" onclick="navigate('home');closeStartMenu()"><span class="si-icon">🏠</span>Головна</div>
-    <div class="start-item" onclick="navigate('statistics');closeStartMenu()"><span class="si-icon">📊</span>Статистика</div>
-    <div class="start-item" onclick="navigate('dashboards');closeStartMenu()"><span class="si-icon">📈</span>Дашборди</div>
-    <div class="start-item" onclick="navigate('dataset');closeStartMenu()"><span class="si-icon">🗄️</span>Датасети</div>
-    <div class="start-item" onclick="navigate('api');closeStartMenu()"><span class="si-icon">⚙️</span>API Explorer</div>
+    <div class="start-item" onclick="navigate('home');closeStartMenu()"><span class="si-icon"><img src="assets/УкрДані.png" width="24" height="24" alt="Головна" style="image-rendering:pixelated;vertical-align:middle;"></span>Головна</div>
+    <div class="start-item" onclick="navigate('statistics');closeStartMenu()"><span class="si-icon"><img src="assets/statistics.png" width="24" height="24" alt="Статистика" style="image-rendering:pixelated;vertical-align:middle;"></span>Статистика</div>
+    <div class="start-item" onclick="navigate('map');closeStartMenu()"><span class="si-icon"><img src="assets/map.png" width="24" height="24" alt="Карта" style="image-rendering:pixelated;vertical-align:middle;"></span>Карта регіонів</div>
+    <div class="start-item" onclick="navigate('compare');closeStartMenu()"><span class="si-icon"><img src="assets/compare.png" width="24" height="24" alt="Порівняння" style="image-rendering:pixelated;vertical-align:middle;"></span>Порівняння</div>
+    <div class="start-item" onclick="navigate('api');closeStartMenu()"><span class="si-icon"><img src="assets/api.png" width="24" height="24" alt="API Explorer" style="image-rendering:pixelated;vertical-align:middle;"></span>API Explorer</div>
     <div class="start-sep"></div>
-    <div class="start-item" onclick="navigate('sources');closeStartMenu()"><span class="si-icon">📁</span>Джерела даних</div>
-    <div class="start-item" onclick="navigate('about');closeStartMenu()"><span class="si-icon">ℹ️</span>Про проєкт</div>
+    <div class="start-item" onclick="navigate('sources');closeStartMenu()"><span class="si-icon"><img src="assets/folder1.png" width="24" height="24" alt="Джерела" style="image-rendering:pixelated;vertical-align:middle;"></span>Джерела даних</div>
+    <div class="start-item" onclick="navigate('about');closeStartMenu()"><span class="si-icon"><img src="assets/about.png" width="24" height="24" alt="Про проєкт" style="image-rendering:pixelated;vertical-align:middle;"></span>Про проєкт</div>
     <div class="start-sep"></div>
-    <div class="start-item" onclick="toggleTheme();closeStartMenu()"><span class="si-icon">🌙</span>Темна/Світла тема</div>
+    <div class="start-item" id="start-theme-btn" onclick="toggleTheme();closeStartMenu()"><span class="si-icon"><img src="assets/moon.png" width="24" height="24" alt="Тема" style="image-rendering:pixelated;vertical-align:middle;"></span>Темна тема</div>
     <div class="start-sep"></div>
-    <div class="start-item" style="color:var(--red);" onclick="if(confirm('Закрити УкрДані?'))window.close()"><span class="si-icon">⏻</span>Вимкнути</div>
+    <div class="start-item" style="color:var(--red);"
+         onclick="if(confirm('Закрити УкрДані?'))window.close()"><span class="si-icon"><img src="assets/shut.png" width="24" height="24" alt="Тема" style="image-rendering:pixelated;vertical-align:middle;"></span>Вимкнути</div>
   </div>
 </div>
 
-<script src="js/mock-data.js"></script>
-<script src="js/state.js"></script>
-<script src="js/router.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/search.js"></script>
-<script src="js/charts.js"></script>
-<script src="js/datasets.js"></script>
-<script src="js/api.js"></script>
-<script src="js/export.js"></script>
+<!-- ══════════════════════════════════════════════════════════
+     SCRIPTS (порядок важливий!)
+     ══════════════════════════════════════════════════════════ -->
+
+<!-- Data -->
+<script src="data/ukraine-svg.js"></script>
+
+<!-- Core -->
+<script src="js/core/state.js"></script>
+<script src="js/core/api.js"></script>
+<script src="js/core/router.js"></script>
+<script src="js/core/ui.js"></script>
+
+<!-- Charts -->
+<script src="js/charts/charts-core.js"></script>
+<script src="js/charts/charts-home.js"></script>
+<script src="js/charts/charts-datasets.js"></script>
+
+<!-- Pages -->
+<script src="js/pages/home.js"></script>
+<script src="js/pages/statistics.js"></script>
+<script src="js/pages/map.js"></script>
+<script src="js/pages/compare.js"></script>
+<script src="js/pages/sources.js"></script>
+<script src="js/pages/about.js"></script>
+<script src="js/pages/api-explorer.js"></script>
+
+<!-- Bootstrap -->
 <script src="js/app.js"></script>
+
 </body>
 </html>

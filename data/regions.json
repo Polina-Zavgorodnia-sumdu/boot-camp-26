@@ -1,202 +1,27 @@
 [
-  {
-    "id": "kyiv",
-    "name": "Київ",
-    "gdp": 98400,
-    "unemployment": 3.8,
-    "salary": 28600,
-    "population": 2960.0
-  },
-  {
-    "id": "donetsk",
-    "name": "Донецька",
-    "gdp": 31200,
-    "unemployment": 12.4,
-    "salary": 14200,
-    "population": 1650.0
-  },
-  {
-    "id": "dnipro",
-    "name": "Дніпропетровська",
-    "gdp": 62400,
-    "unemployment": 7.2,
-    "salary": 19800,
-    "population": 3100.0
-  },
-  {
-    "id": "kharkiv",
-    "name": "Харківська",
-    "gdp": 44100,
-    "unemployment": 6.8,
-    "salary": 18200,
-    "population": 2680.0
-  },
-  {
-    "id": "zaporizhzhia",
-    "name": "Запорізька",
-    "gdp": 28800,
-    "unemployment": 8.9,
-    "salary": 17100,
-    "population": 1520.0
-  },
-  {
-    "id": "lviv",
-    "name": "Львівська",
-    "gdp": 32100,
-    "unemployment": 7.4,
-    "salary": 16400,
-    "population": 2560.0
-  },
-  {
-    "id": "odesa",
-    "name": "Одеська",
-    "gdp": 38600,
-    "unemployment": 6.2,
-    "salary": 17800,
-    "population": 2380.0
-  },
-  {
-    "id": "poltava",
-    "name": "Полтавська",
-    "gdp": 24800,
-    "unemployment": 7.8,
-    "salary": 16200,
-    "population": 1320.0
-  },
-  {
-    "id": "mykolaiv",
-    "name": "Миколаївська",
-    "gdp": 11200,
-    "unemployment": 9.8,
-    "salary": 14800,
-    "population": 1080.0
-  },
-  {
-    "id": "vinnytsia",
-    "name": "Вінницька",
-    "gdp": 14800,
-    "unemployment": 8.4,
-    "salary": 15100,
-    "population": 1420.0
-  },
-  {
-    "id": "sumy",
-    "name": "Сумська",
-    "gdp": 9800,
-    "unemployment": 9.2,
-    "salary": 14100,
-    "population": 1020.0
-  },
-  {
-    "id": "cherkasy",
-    "name": "Черкаська",
-    "gdp": 10400,
-    "unemployment": 8.9,
-    "salary": 14400,
-    "population": 1140.0
-  },
-  {
-    "id": "kherson",
-    "name": "Херсонська",
-    "gdp": 7200,
-    "unemployment": 11.8,
-    "salary": 13200,
-    "population": 980.0
-  },
-  {
-    "id": "kyiv-obl",
-    "name": "Київська обл.",
-    "gdp": 29800,
-    "unemployment": 5.4,
-    "salary": 21400,
-    "population": 1820.0
-  },
-  {
-    "id": "luhansk",
-    "name": "Луганська",
-    "gdp": 8200,
-    "unemployment": 14.2,
-    "salary": 11800,
-    "population": 980.0
-  },
-  {
-    "id": "ternopil",
-    "name": "Тернопільська",
-    "gdp": 9100,
-    "unemployment": 10.2,
-    "salary": 14600,
-    "population": 1040.0
-  },
-  {
-    "id": "chernivtsi",
-    "name": "Чернівецька",
-    "gdp": 7800,
-    "unemployment": 10.8,
-    "salary": 13800,
-    "population": 900.0
-  },
-  {
-    "id": "rivne",
-    "name": "Рівненська",
-    "gdp": 10200,
-    "unemployment": 9.6,
-    "salary": 14200,
-    "population": 1080.0
-  },
-  {
-    "id": "ivano-frankivsk",
-    "name": "Івано-Франківська",
-    "gdp": 12800,
-    "unemployment": 8.8,
-    "salary": 15400,
-    "population": 1380.0
-  },
-  {
-    "id": "volyn",
-    "name": "Волинська",
-    "gdp": 9400,
-    "unemployment": 9.8,
-    "salary": 14800,
-    "population": 1040.0
-  },
-  {
-    "id": "zakarpattia",
-    "name": "Закарпатська",
-    "gdp": 9800,
-    "unemployment": 11.2,
-    "salary": 13600,
-    "population": 1240.0
-  },
-  {
-    "id": "khmelnytskyi",
-    "name": "Хмельницька",
-    "gdp": 11800,
-    "unemployment": 8.6,
-    "salary": 14800,
-    "population": 1280.0
-  },
-  {
-    "id": "chernihiv",
-    "name": "Чернігівська",
-    "gdp": 10200,
-    "unemployment": 9.4,
-    "salary": 14200,
-    "population": 1020.0
-  },
-  {
-    "id": "kirovograd",
-    "name": "Кіровоградська",
-    "gdp": 9600,
-    "unemployment": 10.4,
-    "salary": 13800,
-    "population": 940.0
-  },
-  {
-    "id": "zhytomyr",
-    "name": "Житомирська",
-    "gdp": 10400,
-    "unemployment": 10.2,
-    "salary": 14100,
-    "population": 1200.0
-  }
+  {"id": "kyiv",            "name": "Київ",             "gdp": 2287303, "unemployment": 3.8,  "salary": 28600, "population": 2960.0},
+  {"id": "donetsk",         "name": "Донецька",          "gdp": 181043,  "unemployment": 12.4, "salary": 16329, "population": 1650.0},
+  {"id": "dnipro",          "name": "Дніпропетровська",  "gdp": 885861,  "unemployment": 7.2,  "salary": 22000, "population": 3100.0},
+  {"id": "kharkiv",         "name": "Харківська",        "gdp": 494276,  "unemployment": 6.8,  "salary": 18200, "population": 2680.0},
+  {"id": "zaporizhzhia",    "name": "Запорізька",        "gdp": 159102,  "unemployment": 8.9,  "salary": 19665, "population": 1520.0},
+  {"id": "lviv",            "name": "Львівська",         "gdp": 424830,  "unemployment": 7.4,  "salary": 21000, "population": 2560.0},
+  {"id": "odesa",           "name": "Одеська",           "gdp": 404157,  "unemployment": 6.2,  "salary": 20500, "population": 2380.0},
+  {"id": "poltava",         "name": "Полтавська",        "gdp": 338713,  "unemployment": 7.8,  "salary": 18630, "population": 1320.0},
+  {"id": "mykolaiv",        "name": "Миколаївська",      "gdp": 97667,   "unemployment": 9.8,  "salary": 17020, "population": 1080.0},
+  {"id": "vinnytsia",       "name": "Вінницька",         "gdp": 209674,  "unemployment": 8.4,  "salary": 17365, "population": 1420.0},
+  {"id": "sumy",            "name": "Сумська",           "gdp": 78348,   "unemployment": 9.2,  "salary": 16214, "population": 1020.0},
+  {"id": "cherkasy",        "name": "Черкаська",         "gdp": 191691,  "unemployment": 8.9,  "salary": 16560, "population": 1140.0},
+  {"id": "kherson",         "name": "Херсонська",        "gdp": 53192,   "unemployment": 11.8, "salary": 15179, "population": 980.0},
+  {"id": "kyiv-obl",        "name": "Київська обл.",     "gdp": 441392,  "unemployment": 5.4,  "salary": 24609, "population": 1820.0},
+  {"id": "luhansk",         "name": "Луганська",         "gdp": 57133,   "unemployment": 14.2, "salary": 13569, "population": 980.0},
+  {"id": "ternopil",        "name": "Тернопільська",     "gdp": 119114,  "unemployment": 10.2, "salary": 16790, "population": 1040.0},
+  {"id": "chernivtsi",      "name": "Чернівецька",       "gdp": 89769,   "unemployment": 10.8, "salary": 15869, "population": 900.0},
+  {"id": "rivne",           "name": "Рівненська",        "gdp": 127481,  "unemployment": 9.6,  "salary": 16329, "population": 1080.0},
+  {"id": "ivano-frankivsk", "name": "Івано-Франківська", "gdp": 222689,  "unemployment": 8.8,  "salary": 17710, "population": 1380.0},
+  {"id": "volyn",           "name": "Волинська",         "gdp": 135823,  "unemployment": 9.8,  "salary": 17020, "population": 1040.0},
+  {"id": "zakarpattia",     "name": "Закарпатська",      "gdp": 137032,  "unemployment": 11.2, "salary": 15639, "population": 1240.0},
+  {"id": "khmelnytskyi",    "name": "Хмельницька",       "gdp": 153100,  "unemployment": 8.6,  "salary": 17020, "population": 1280.0},
+  {"id": "chernihiv",       "name": "Чернігівська",      "gdp": 73904,   "unemployment": 9.4,  "salary": 16329, "population": 1020.0},
+  {"id": "kirovograd",      "name": "Кіровоградська",    "gdp": 146652,  "unemployment": 10.4, "salary": 15869, "population": 940.0},
+  {"id": "zhytomyr",        "name": "Житомирська",       "gdp": 148755,  "unemployment": 10.2, "salary": 16214, "population": 1200.0}
 ]
